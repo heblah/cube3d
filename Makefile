@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/12/21 18:01:53 by halvarez         ###   ########.fr        #
+#    Updated: 2022/12/21 18:09:09 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,13 @@ ${NAME}:${OBJS}
 		${MAKE} -C libft
 		${CC} ${CFLAGS} ${OBJS} ${CLIB} -o ${NAME}
 
-all:    ${NAME}
+all:    hgen ${NAME}
 
 bonus:	all
+
+hgen:
+	cd src; ./hgenerator ft_cube3d.h
+	cd -
 
 #Cleaning rules
 clean:
@@ -66,4 +70,4 @@ re:     fclean all
 #Dependencies list
 -include ${DEPS}
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus hgen
