@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 14:44:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/21 18:15:25 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,39 +40,9 @@ int	close_window(t_data *data)
 		free(data->mlx_ptr);
 		data->mlx_ptr = NULL;
 	}
-	if (data->m_map)
-		free_matrix(data->m_map);
-	if (data->origin)
-		free_matrix(data->origin);
-	if (data->proj2screen)
-		free_matrix(data->proj2screen);
-	if (data->onscreen)
-		free_matrix(data->onscreen);
-	if (data->transformation)
-		free_matrix(data->transformation);
-	if (data->tf_int)
-		free_matrix(data->tf_int);
+	/* free all */
 	exit(0);
 	return (0);
-}
-
-void	*print_errno(int err, int line, const char *func, char *file)
-{
-	int	errsv;
-
-	errsv = err;
-	ft_printf("%s\n"
-		"Error line %d, function %s in the file \"%s\"\n",
-		strerror(errsv), line, func, file);
-	return (NULL);
-}
-
-void	*print_error(char *s, int line, const char *func, char *file)
-{
-	ft_printf("%s\n"
-		"Error line %d, function %s in the file \"%s\"\n",
-		s, line, func, file);
-	return (NULL);
 }
 
 int	main(int argc, char **argv)
