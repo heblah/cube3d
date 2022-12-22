@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/21 18:29:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:51:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
-# include <mlx.h>
 # include <math.h>
 # include <sys/types.h>
 # include "ft_libft.h"
+# include "mlx.h"
 
+# define DBG printf("here: %s:%d\n", __func__, __LINE__);
 # define W_WIDTH		1920
 # define W_HEIGHT		1080
 # define MLX_ERROR 		-1
@@ -52,45 +53,13 @@ typedef struct s_matrix
 	int		col;
 }			t_matrix;
 
-/* t_rotation : structure of rotation ======================================= */
-typedef struct s_rotation
-{
-	double	phi;
-	double	teta;
-	double	zoom;
-	double	prll;
-}			t_rotation;
-
-/* t_point : point of coordinates (x,y,z) =================================== */
-typedef struct s_point
-{
-	int	x3d;
-	int	y3d;
-	int	z3d;
-}			t_point;
-
 /* t_data =================================================================== */
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	int			init_color;
-	int			color;
-	int			drawline;
-	int			mapw;
-	int			maph;
-	t_img		img;
-	t_matrix	*m_map;
-	t_matrix	*origin;
-	t_matrix	*proj2screen;
-	t_matrix	*onscreen;
-	t_matrix	*transformation;
-	t_gps		gps;
-	t_matrix	*tf_int;
-	t_point		pt1;
-	t_point		pt2;
-	t_point		pt3;
-	t_rotation	rotation;
+	t_img		*old_img;
+	t_img		*img;
 }				t_data;
 
 /* e_freeflag : to chose what matrix freed ================================== */
