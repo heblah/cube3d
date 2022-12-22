@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/12/22 14:49:58 by halvarez         ###   ########.fr        #
+#    Updated: 2022/12/22 16:31:00 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ cflags.rls		:= -Wall -Wextra -Werror -MMD -MP -Isrc -Ilibft -Imlx_linux
 cflags.gdb		:= -g3
 cflags.san		:= -g3 -fsanitize=address
 CFLAGS			= ${cflags.rls} ${cflags.${build}}
-export CFLAGS
+export			CFLAGS
 
 #Rules to other makefiles
 CC			= cc
@@ -46,7 +46,7 @@ RM			= rm -rf
 #Rules to compile
 ${NAME}:${OBJS}
 		${MAKE} -C mlx_linux 
-		${MAKE} -C libft
+		${MAKE} -eC libft
 		${CC} ${CFLAGS} ${OBJS} ${OMLX} ${CLIB} -o ${NAME}
 
 all:    ${NAME}
