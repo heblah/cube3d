@@ -6,12 +6,12 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/12/22 16:31:00 by halvarez         ###   ########.fr        #
+#    Updated: 2022/12/27 11:07:43 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version = release
-build		:=
+build		:= san
 
 #Compilation of the mandatory part
 NAME    	= cube3D

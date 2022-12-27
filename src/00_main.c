@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/22 16:18:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/27 11:28:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,26 @@ t_data	*getdata(void)
 	return (&data);
 }
 
-int	main(int argc, char **argv __attribute__((unused)))
+t_data	*initdata(void)
 {
 	t_data	*data;
 
 	data = getdata();
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
+	data->old_img = NULL;
+	data->img = NULL;
+	return (data);
+}
+
+int	main(int argc, char **argv __attribute__((unused)))
+{
+	t_data	*data;
+
+	data = initdata();
 	if (argc == 2)
 	{
-		if (init_data(data) == MLX_ERROR || open_window(data) == MLX_ERROR)
+		if (open_window(data) == MLX_ERROR)
 			return (MLX_ERROR);
 		/*
 		new_img(&data);

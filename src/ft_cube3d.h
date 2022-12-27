@@ -13,7 +13,7 @@
 int		open_window(t_data *data);
 int		close_window(t_data *data);
 t_data	*getdata(void);
-int		init_data(t_data *data);
+t_data	*initdata(void);
 
 /* ./02_handle_events.c ===================================================== */
 int		handle_keypress(int keysym, t_data *data);
