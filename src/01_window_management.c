@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/27 11:06:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2022/12/27 11:30:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,3 @@ int	close_window(t_data *data)
 	/* free all */
 	return (exit(0), 0);
 }
-
-int	init_data(t_data *data __attribute__((unused)))
-{
-	data = NULL;
-	return (0);
-}
-
