@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2022/12/27 11:07:43 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/03 10:21:27 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,29 @@ build		:= san
 
 #Compilation of the mandatory part
 NAME    	= cube3D
-SRCS_DIR	= ./src/
-SRCS		= 00_main.c 01_window_management.c 02_handle_events.c #03_handle_img.c
-SRCS		+= 
-OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
-DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
+
+MAIN_DIR	= ./src/main/
+MAIN		= 00_main.c
+MAIN		+= 
+SRC			+= $(addprefix ${MAIN_DIR}, ${MAIN})
+
+LIBX_DIR	= ./src/handle_minilibx/
+LIBX		= 00_handle_window.c 01_handle_events.c #02_handle_img.c
+LIBX		+= 
+SRC			+= $(addprefix ${LIBX_DIR}, ${LIBX})
+
+MTRX_DIR	= ./src/matrix/
+MTRX		=
+MTRX		+= 
+SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
+
+UTILS_DIR	= ./src/utils/
+UTILS		= #00_garbage_memory.c
+UTILS		+= 
+SRC			+= $(addprefix ${UTILS_DIR}, ${UTILS})
+
+OBJ			= ${SRC:.c=.o}
+DEP			= ${OBJ:.o=.d}
 
 #Libraries
 OMLX		= -I/usr/include -Imlx_linux
@@ -44,10 +62,10 @@ RM			= rm -rf
 		${CC} ${CFLAGS} -c $< -o $@
 
 #Rules to compile
-${NAME}:${OBJS}
+${NAME}:${OBJ}
 		${MAKE} -C mlx_linux 
 		${MAKE} -eC libft
-		${CC} ${CFLAGS} ${OBJS} ${OMLX} ${CLIB} -o ${NAME}
+		${CC} ${CFLAGS} ${OBJ} ${OMLX} ${CLIB} -o ${NAME}
 
 all:    ${NAME}
 
@@ -59,7 +77,7 @@ hgen:
 
 #Cleaning rules
 clean:
-		${RM} ${OBJS} ${DEPS}
+		${RM} ${OBJ} ${DEP}
 		${MAKE} clean -C mlx_linux
 		${MAKE} clean -C libft
 
@@ -70,6 +88,6 @@ fclean: clean
 re:     fclean all
 
 #Dependencies list
--include ${DEPS}
+-include ${DEP}
 
 .PHONY: all clean fclean re bonus hgen
