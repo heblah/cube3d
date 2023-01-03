@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 10:33:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:39:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ t_data	*initdata(void)
 	return (data);
 }
 
-int	main(int argc, char **argv __attribute__((unused)))
+int	main(int argc, char **argv)
 {
 	t_data	*data;
 
 	data = initdata();
-	if (argc == 2)
+	if (argc == 2 && parser(data, argv[1]) != -1)
 	{
 		if (open_window(data) == MLX_ERROR)
 			return (MLX_ERROR);
@@ -53,7 +53,7 @@ int	main(int argc, char **argv __attribute__((unused)))
 			&handle_nothing, data); /* handle_mouse */
 		mlx_loop(data->mlx_ptr);
 	}
-	else
+	else if (argc != 2)
 		ft_putstr_fd("Select one map.\n", 1);
 	return (close_window(data), 0);
 }

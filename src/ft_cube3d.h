@@ -26,6 +26,9 @@ t_img	*new_img(t_data *data);
 t_data	*getdata(void);
 t_data	*initdata(void);
 
+/* ./parsing/00_parser.c ==================================================== */
+int		parser(t_data *data, char *path2map);
+
 /* ./utils/00_garbage_memory.c ============================================== */
 void	*free_label(t_garbage *garbage, t_label label);
 void	*free_adr(t_garbage *garbage, void *adr);

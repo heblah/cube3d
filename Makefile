@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/03 10:37:36 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/03 14:35:23 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,11 @@ MAIN_DIR	= ./src/main/
 MAIN		= 00_main.c
 MAIN		+= 
 SRC			+= $(addprefix ${MAIN_DIR}, ${MAIN})
+
+PARS_DIR	= ./src/parsing/
+PARS		= 00_parser.c
+PARS		+= 
+SRC			+= $(addprefix ${PARS_DIR}, ${PARS})
 
 LIBX_DIR	= ./src/handle_minilibx/
 LIBX		= 00_handle_window.c 01_handle_events.c #02_handle_img.c
