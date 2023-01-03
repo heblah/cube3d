@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 16:43:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:31:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,18 @@ typedef struct s_garbage
 	struct s_garbage	*next;
 }					t_garbage;
 
+/* union for rgb colors ===================================================== */
+typedef union u_color
+{
+	uint32_t	rgb;
+	struct
+	{
+		uint8_t	blue;
+		uint8_t	green;
+		uint8_t	red;
+	}
+}	t_color;
+
 /* t_data =================================================================== */
 typedef struct s_data
 {
@@ -94,10 +106,12 @@ typedef struct s_data
 	t_img		*img;
 	t_garbage	*garbage;
 	t_matrix	*map;
-	int			fd_no;
-	int			fd_so;
-	int			fd_we;
-	int			fd_ea;
+	t_color		floor;
+	t_color		ceil;
+	char		*no_txt;
+	char		*so_txt;
+	char		*we_txt;
+	char		*ea_txt;
 }				t_data;
 
 /* e_freeflag : to chose what matrix freed ================================== */

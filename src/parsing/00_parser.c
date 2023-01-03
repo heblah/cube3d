@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 16:49:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:04:02 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,40 @@ static int	openfile(char *path2file)
 	return (fd);
 }
 
-static int	get_texture(char *path)
+static char	*get_texture(char *path)
 {
-	if (check_extension(".xpm", path) == false)
-		return (-1);
-	return (openfile(path));
+	char	*texture;
+
+	texture = NULL;
+	if (check_extension(".xpm", path) == true && openfile(path) != -1)
+	{
+		if (close(fd) == -1)
+		{
+			ft_putstr_fd("Error closing the file", 2);
+			ft_putstr_fd(path, 2);
+			ft_putstr_fd(".\n", 2);
+		}
+		texture = ft_strdup(path);
+		return (memg(MALLOC, 0, texture, PARS), texture);
+	}
+	else if (check_extension(".xpm", path) == false)
+		ft_pustr_fd("Error : texture has to be in xpm format.\n", 2);
+	return (NULL);
+}
+
+static t_color	getcolor(char *color_txt)
+{
+	t_color	color;
+	char	r[4];
+	char	g[4];
+	char	b[4];
+	int		i;
+
+	while (*(color_txt + i))
+	{
+		//parcourir la string et injecter les rgb dans color
+	}
+	return (color);
 }
 
 int	parser(t_data *data __attribute__((unused)), char *path2map)
@@ -69,15 +98,17 @@ int	parser(t_data *data __attribute__((unused)), char *path2map)
 	while (gnl != NULL)
 	{
 		if (ft_strncmp(gnl, "NO ", 3) == 0)
-			data->fd_no = get_texture(gnl + 3);
+			data->no_txt = get_texture(gnl + 3);
 		else if (ft_strncmp(gnl, "SO ", 3) == 0)
-			data->fd_so = get_texture(gnl + 3);
+			data->so_txt = get_texture(gnl + 3);
 		else if (ft_strncmp(gnl, "WE ", 3) == 0)
-			data->fd_we = get_texture(gnl + 3);
+			data->we_txt = get_texture(gnl + 3);
 		else if (ft_strncmp(gnl, "EA ", 3) == 0)
-			data->fd_ea = get_texture(gnl + 3);
+			data->ea_txt = get_texture(gnl + 3);
 		else if (ft_strncmp(gnl, "F ", 2) == 0)
+			data->floor = getcolor(gnl + 2);
 		else if (ft_strncmp(gnl, "C ", 2) == 0)
+			data->ceil = getcolor(gnl + 2);
 		else if (ft_isdigit(*gnl) == true)
 
 	}
