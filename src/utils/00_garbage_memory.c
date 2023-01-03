@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:25:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 10:21:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:47:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_cube3d.h"
 #define ERROR "Error alllocating memory, exiting minishell.\n"
 
-static void	*free_label(t_garbage *garbage, t_label label)
+void	*free_label(t_garbage *garbage, t_label label)
 {
 	while (garbage)
 	{
@@ -28,7 +28,7 @@ static void	*free_label(t_garbage *garbage, t_label label)
 	return (NULL);
 }
 
-static void	*free_adr(t_garbage *garbage, void *adr)
+void	*free_adr(t_garbage *garbage, void *adr)
 {
 	while (garbage)
 	{
@@ -42,7 +42,7 @@ static void	*free_adr(t_garbage *garbage, void *adr)
 	return (NULL);
 }
 
-static void	*purge_garbage(t_garbage *garbage)
+void	*purge_garbage(t_garbage *garbage)
 {
 	t_garbage	*tmp;
 
@@ -59,7 +59,7 @@ static void	*purge_garbage(t_garbage *garbage)
 	return (NULL);
 }
 
-static void	*add_garbage(t_data *data, size_t size, void *adr, t_label label)
+void	*add_garbage(t_data *data, size_t size, void *adr, t_label label)
 {
 	t_garbage	*new;
 
@@ -87,12 +87,12 @@ static void	*add_garbage(t_data *data, size_t size, void *adr, t_label label)
 }
 
 //memg(MALLOC, sizeof(TYPE), NULL, NOTHING);
-void	*memg(t_mem_t type, size_t size, void *adr, t_label label)
+void	*memg(t_memt type, size_t size, void *adr, t_label label)
 {
 	t_data		*data;
 	t_garbage	*garb;
 
-	data = get_data();
+	data = getdata();
 	garb = data->garbage;
 	if (type == MALLOC)
 		return (add_garbage(data, size, adr, label));

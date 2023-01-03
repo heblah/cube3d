@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/22 15:19:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:40:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ typedef struct s_matrix
 	int		col;
 }			t_matrix;
 
+/* Label for garbage ======================================================== */
+typedef enum e_label
+{
+	INIT,
+	PARSE,
+	LIBFT,
+	OTHER,
+}	t_label;
+
+typedef enum e_memt
+{
+	MALLOC,
+	FREE,
+	PURGE,
+	LABEL
+}	t_memt;
+
+
+/* Garbage collector structure ============================================== */
+typedef struct s_garbage
+{
+	void				*address;
+	t_label				label;
+	struct s_garbage	*next;
+}					t_garbage;
+
 /* t_data =================================================================== */
 typedef struct s_data
 {
@@ -60,6 +86,7 @@ typedef struct s_data
 	void		*win_ptr;
 	t_img		*old_img;
 	t_img		*img;
+	t_garbage	*garbage;
 }				t_data;
 
 /* e_freeflag : to chose what matrix freed ================================== */

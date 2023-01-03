@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/03 10:21:27 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/03 10:37:36 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MTRX		+=
 SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
 
 UTILS_DIR	= ./src/utils/
-UTILS		= #00_garbage_memory.c
+UTILS		= 00_garbage_memory.c
 UTILS		+= 
 SRC			+= $(addprefix ${UTILS_DIR}, ${UTILS})
 
