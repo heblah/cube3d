@@ -29,10 +29,16 @@ t_data	*initdata(void);
 /* ./parsing/00_parser.c ==================================================== */
 int		parser(t_data *data, char *path2map);
 
+/* ./parsing/01_parsing.c =================================================== */
+char	*rm_nl(char *gnl);
+
 /* ./utils/00_garbage_memory.c ============================================== */
 void	*free_label(t_garbage *garbage, t_label label);
 void	*free_adr(t_garbage *garbage, void *adr);
 void	*purge_garbage(t_garbage *garbage);
 void	*add_garbage(t_data *data, size_t size, void *adr, t_label label);
 void	*memg(t_memt type, size_t size, void *adr, t_label label);
+
+/* ./utils/01_list.c ======================================================== */
+t_list	*list_addback(t_list **first, char *newdata);
 #endif

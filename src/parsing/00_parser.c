@@ -6,14 +6,14 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/04 11:58:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:56:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_cube3d.h"
 #include "ft_cube3d.h"
 
-t_bool	check_extension(char *ext, char *file)
+static t_bool	check_extension(char *ext, char *file)
 {
 	int	len_ext;
 	int	len_file;
@@ -96,17 +96,7 @@ static t_color	getcolor(char *color_txt)
 	return (color);
 }
 
-char	*rm_nl(char *gnl)
-{
-	int	len;
-
-	len = ft_strlen(gnl);
-	if (len > 0)
-		*(gnl + len - 1) = '\0';
-	return (gnl);
-}
-
-int	parser(t_data *data __attribute__((unused)), char *path2map)
+int	parser(t_data *data, char *path2map)
 {
 	int		fd;
 	char	*gnl;
@@ -129,7 +119,8 @@ int	parser(t_data *data __attribute__((unused)), char *path2map)
 			data->floor = getcolor(gnl + 2);
 		else if (ft_strncmp(gnl, "C ", 2) == 0)
 			data->ceil = getcolor(gnl + 2);
-		//else if ()
+		else if (*gnl == '1' || *gnl == ' ' || *gnl == '\t')
+			list_addback(&data->map_tmp, gnl);
 		free(gnl);
 		gnl = rm_nl(get_next_line(fd));
 	}

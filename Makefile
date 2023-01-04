@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/03 14:35:23 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/04 16:57:25 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ MAIN		+=
 SRC			+= $(addprefix ${MAIN_DIR}, ${MAIN})
 
 PARS_DIR	= ./src/parsing/
-PARS		= 00_parser.c
+PARS		= 00_parser.c 01_parser.c
 PARS		+= 
 SRC			+= $(addprefix ${PARS_DIR}, ${PARS})
 
@@ -37,7 +37,7 @@ MTRX		+=
 SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
 
 UTILS_DIR	= ./src/utils/
-UTILS		= 00_garbage_memory.c
+UTILS		= 00_garbage_memory.c 01_list.c
 UTILS		+= 
 SRC			+= $(addprefix ${UTILS_DIR}, ${UTILS})
 

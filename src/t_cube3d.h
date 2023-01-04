@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/04 11:58:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:45:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ typedef struct s_garbage
 	struct s_garbage	*next;
 }					t_garbage;
 
+/* Chained list structure =================================================== */
+typedef struct s_list
+{
+	char			*data;
+	struct s_list	*next;
+}					t_list;
+
 /* union for rgb colors ===================================================== */
 typedef union u_color
 {
@@ -106,6 +113,7 @@ typedef struct s_data
 	char		*path2map;
 	t_img		*img;
 	t_garbage	*garbage;
+	t_list		*map_tmp;
 	t_matrix	*map;
 	t_color		floor;
 	t_color		ceil;
