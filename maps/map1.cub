@@ -1,7 +1,7 @@
-NO
-SO
-WE
-EA
+NO /path2north.xpm
+SO /path2south.xpm
+WE /path2west.xpm
+EA /path2east.xpm
 F 220,100,0
 C 225,30,0
 111111

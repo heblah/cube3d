@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 18:04:02 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:58:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ t_bool	check_extension(char *ext, char *file)
 	return (true);
 }
 
-static int	openfile(char *path2file)
+static int	openfile(char *path2file, char *ext)
 {
 	int	fd;
 
-	if (check_extension(".cub", path2file) == false)
+	if (ext != NULL && check_extension(ext, path2file) == false)
 		return (-1);
 	fd = open(path2file, O_RDONLY | O_DIRECTORY);
 	if (fd == -1)
@@ -53,9 +53,11 @@ static int	openfile(char *path2file)
 static char	*get_texture(char *path)
 {
 	char	*texture;
+	int		fd;
 
 	texture = NULL;
-	if (check_extension(".xpm", path) == true && openfile(path) != -1)
+	fd = openfile(path, ".xpm");
+	if (check_extension(".xpm", path) == true && fd != -1)
 	{
 		if (close(fd) == -1)
 		{
@@ -64,26 +66,44 @@ static char	*get_texture(char *path)
 			ft_putstr_fd(".\n", 2);
 		}
 		texture = ft_strdup(path);
-		return (memg(MALLOC, 0, texture, PARS), texture);
+		return (memg(MALLOC, 0, texture, PARSE), texture);
 	}
 	else if (check_extension(".xpm", path) == false)
-		ft_pustr_fd("Error : texture has to be in xpm format.\n", 2);
+		ft_putstr_fd("Error : texture has to be in xpm format.\n", 2);
 	return (NULL);
 }
 
 static t_color	getcolor(char *color_txt)
 {
 	t_color	color;
-	char	r[4];
-	char	g[4];
-	char	b[4];
 	int		i;
 
+	color.rgb = 0;
+	i = 0;
 	while (*(color_txt + i))
 	{
-		//parcourir la string et injecter les rgb dans color
+		if ((color_txt[i] < '0' || color_txt[i] > '9') && color_txt[i] != ',')
+			return (ft_putstr_fd("Error : wrong format color.\n", 2), color);
+		i++;
 	}
+	color.red = ft_atoi(color_txt);
+	while (*color_txt && *color_txt != ',')
+		color_txt++;
+	color.green = ft_atoi(++color_txt);
+	while (*color_txt && *color_txt != ',')
+		color_txt++;
+	color.blue = ft_atoi(++color_txt);
 	return (color);
+}
+
+char	*rm_nl(char *gnl)
+{
+	int	len;
+
+	len = ft_strlen(gnl);
+	if (len > 0)
+		*(gnl + len - 1) = '\0';
+	return (gnl);
 }
 
 int	parser(t_data *data __attribute__((unused)), char *path2map)
@@ -91,10 +111,10 @@ int	parser(t_data *data __attribute__((unused)), char *path2map)
 	int		fd;
 	char	*gnl;
 
-	fd = openmap(path2map);
+	fd = openfile(path2map, ".cub");
 	if (fd == -1)
 		return (ft_putstr_fd("Error : invalid map.\n", 2), -1);
-	gnl = get_next_line(fd);
+	gnl = rm_nl(get_next_line(fd));
 	while (gnl != NULL)
 	{
 		if (ft_strncmp(gnl, "NO ", 3) == 0)
@@ -109,8 +129,9 @@ int	parser(t_data *data __attribute__((unused)), char *path2map)
 			data->floor = getcolor(gnl + 2);
 		else if (ft_strncmp(gnl, "C ", 2) == 0)
 			data->ceil = getcolor(gnl + 2);
-		else if (ft_isdigit(*gnl) == true)
-
+		//else if ()
+		free(gnl);
+		gnl = rm_nl(get_next_line(fd));
 	}
 	return (fd);
 }

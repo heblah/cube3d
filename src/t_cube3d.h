@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 17:31:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:58:05 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include <math.h>
 # include <sys/types.h>
 # include "ft_libft.h"
@@ -93,7 +94,7 @@ typedef union u_color
 		uint8_t	blue;
 		uint8_t	green;
 		uint8_t	red;
-	}
+	};
 }	t_color;
 
 /* t_data =================================================================== */
