@@ -29,7 +29,7 @@ t_data	*initdata(void);
 /* ./parsing/00_parser.c ==================================================== */
 int		parser(t_data *data, char *path2map);
 
-/* ./parsing/01_parsing.c =================================================== */
+/* ./parsing/01_parser.c ==================================================== */
 char	*rm_nl(char *gnl);
 
 /* ./utils/00_garbage_memory.c ============================================== */
@@ -41,4 +41,5 @@ void	*memg(t_memt type, size_t size, void *adr, t_label label);
 
 /* ./utils/01_list.c ======================================================== */
 t_list	*list_addback(t_list **first, char *newdata);
+size_t	listlen(t_list *first);
 #endif

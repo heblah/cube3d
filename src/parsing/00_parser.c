@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/04 16:56:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:16:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	parser(t_data *data, char *path2map)
 	gnl = rm_nl(get_next_line(fd));
 	while (gnl != NULL)
 	{
+		memg(MALLOC, 0, gnl, PARSE);
 		if (ft_strncmp(gnl, "NO ", 3) == 0)
 			data->no_txt = get_texture(gnl + 3);
 		else if (ft_strncmp(gnl, "SO ", 3) == 0)
@@ -121,8 +122,8 @@ int	parser(t_data *data, char *path2map)
 			data->ceil = getcolor(gnl + 2);
 		else if (*gnl == '1' || *gnl == ' ' || *gnl == '\t')
 			list_addback(&data->map_tmp, gnl);
-		free(gnl);
 		gnl = rm_nl(get_next_line(fd));
+		printf("size list = %ld\n", listlen(data->map_tmp));
 	}
 	return (fd);
 }

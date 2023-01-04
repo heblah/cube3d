@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_handle_img.c                                    :+:      :+:    :+:   */
+/*   02_handle_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/22 14:32:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:32:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 /*
 int	clear_window(t_data *data __attribute__((unused)))
 {
-	/* supprimer l'ancienne image */
 	return (0);
 }
+*/
 
 int	render(t_data *data)
 {
@@ -51,7 +51,7 @@ t_img	*new_img(t_data *data)
 		return (NULL);
 	new->mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
 	new->addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp,
-	data->old_img = data->img;
+			data->old_img = data->img);
 	data->img = new;
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:44:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/04 17:03:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:38:51 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ t_list	*list_addback(t_list **first, char *newdata)
 	new = memg(MALLOC, 1 * sizeof(t_list), NULL, PARSE);
 	if (new == NULL)
 		return (ft_putstr_fd("Error : list allocation failed.\n", 2), NULL);
-	new->data = newdata;
+	new->data = ft_strdup(newdata);
+	if (new->data == NULL)
+		return (ft_putstr_fd("Error : list allocation failed.\n", 2), NULL);
+	memg(MALLOC, 0, new->data, PARSE);
 	new->next = NULL;
 	if (first && *first)
 	{
@@ -33,4 +36,17 @@ t_list	*list_addback(t_list **first, char *newdata)
 	else if (first && *first == NULL)
 		*first = new;
 	return (new);
+}
+
+size_t	listlen(t_list *first)
+{
+	size_t	i;
+
+	i = 0;
+	while (first)
+	{
+		first = first->next;
+		i++;
+	}
+	return (i);
 }
