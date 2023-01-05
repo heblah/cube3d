@@ -6,7 +6,7 @@
 #    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/04 16:57:25 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/05 15:13:41 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ MAIN		+=
 SRC			+= $(addprefix ${MAIN_DIR}, ${MAIN})
 
 PARS_DIR	= ./src/parsing/
-PARS		= 00_parser.c 01_parser.c
+PARS		= 00_parser.c 01_parser.c 02_parser.c
 PARS		+= 
 SRC			+= $(addprefix ${PARS_DIR}, ${PARS})
 
@@ -32,7 +32,7 @@ LIBX		+=
 SRC			+= $(addprefix ${LIBX_DIR}, ${LIBX})
 
 MTRX_DIR	= ./src/matrix/
-MTRX		=
+MTRX		= 00_matrix_utils.c
 MTRX		+= 
 SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
 

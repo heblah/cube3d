@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 10:54:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 15:17:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_matrix	*new_matrix(int row, int col)
 	i = 0;
 	while (i < row)
 	{
-		*(new->pxl + i) = malloc(col * sizeof(int));
+		*(new->pxl + i) = memg(MALLOC, col * sizeof(int), NULL, DATA);
 		if (!*(new->pxl + i))
 			return (free_matrix(new));
 		j = 0;
@@ -106,7 +106,7 @@ t_matrix	*free_matrix(t_matrix *m)
 	return (NULL);
 }
 
-void	free_tab(double **tab)
+void	free_tab(int **tab)
 {
 	int	i;
 

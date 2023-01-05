@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 12:12:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:46:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <X11/keysym.h>
 # include <stdlib.h>
 # include <stdint.h>
+# include <limits.h>
 # include <math.h>
 # include <sys/types.h>
 # include "ft_libft.h"
@@ -113,7 +114,6 @@ typedef struct s_data
 	t_img		*old_img;
 	char		*path2map;
 	t_img		*img;
-	t_bool		error;
 	t_garbage	*garbage;
 	t_list		*map_tmp;
 	t_matrix	*map;

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 13:00:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 15:31:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,14 @@ static int	openfile(char *path2file, char *ext)
 		if (close(fd) == -1)
 			return (ft_putstr_fd("Error closing the file", 2),
 				ft_putstr_fd(path2file, 2),
-				ft_putstr_fd(".\n", 2),
-				data->error = true, -1);
+				ft_putstr_fd(".\n", 2), -1);
 		else
 			return (-1);
 	}
 	return (fd);
 }
 
-static char	*get_texture(char *path)
+char	*get_texture(char *path)
 {
 	char	*texture;
 	int		fd;
@@ -74,12 +73,12 @@ static char	*get_texture(char *path)
 	return (NULL);
 }
 
-static t_color	getcolor(char *color_txt)
+t_color	getcolor(char *color_txt)
 {
 	t_color	color;
 	int		i;
 
-	color.rgb = 0;
+	color.rgb = UINT_MAX;
 	i = 0;
 	while (*(color_txt + i))
 	{
@@ -87,6 +86,7 @@ static t_color	getcolor(char *color_txt)
 			return (ft_putstr_fd("Error : wrong format color.\n", 2), color);
 		i++;
 	}
+	color.rgb = 0;
 	color.red = ft_atoi(color_txt);
 	while (*color_txt && *color_txt != ',')
 		color_txt++;
@@ -111,12 +111,14 @@ int	parser(t_data *data, char *path2map)
 	{
 		memg(MALLOC, 0, gnl, PARSE);
 		if (*gnl >= 'A' && *gnl <= 'Z')
-			getmapdata(data);
+			getmapdata(data, gnl);
 		else if (*gnl == '1' || *gnl == ' ' || *gnl == '\t')
 			list_addback(&data->map_tmp, gnl);
 		gnl = rm_nl(get_next_line(fd));
 	}
 	if (convertmap(data, data->map_tmp) == false)
 		ft_putstr_fd("Error : wrong map format.\n", 2);
+	if (checkparsing(data) == false)
+		return (-1);
 	return (fd);
 }

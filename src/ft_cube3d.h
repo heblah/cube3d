@@ -26,11 +26,25 @@ t_img	*new_img(t_data *data);
 t_data	*getdata(void);
 t_data	*initdata(void);
 
+/* ./matrix/00_matrix_utils.c =============================================== */
+t_matrix	*m_sum(t_matrix *a, t_matrix *b, int flag);
+t_matrix	*m_prod(t_matrix *a, t_matrix *b, int flag);
+t_matrix	*new_matrix(int row, int col);
+t_matrix	*free_matrix(t_matrix *m);
+void	free_tab(int **tab);
+
 /* ./parsing/00_parser.c ==================================================== */
+char	*get_texture(char *path);
+t_color	getcolor(char *color_txt);
 int		parser(t_data *data, char *path2map);
 
 /* ./parsing/01_parser.c ==================================================== */
 char	*rm_nl(char *gnl);
+void	getmapdata(t_data *data, char *gnl);
+int		convertmap(t_data *data, t_list	*maptmp);
+
+/* ./parsing/02_parser.c ==================================================== */
+t_bool	checkparsing(t_data *data);
 
 /* ./utils/00_garbage_memory.c ============================================== */
 void	*free_label(t_garbage *garbage, t_label label);

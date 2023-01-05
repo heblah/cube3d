@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 12:13:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:56:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@ t_data	*initdata(void)
 	data->win_ptr = NULL;
 	data->old_img = NULL;
 	data->img = NULL;
-	data->error = false;
 	data->garbage = NULL;
 	data->map_tmp = NULL;
 	data->map = NULL;
+	data->no_txt = NULL;
+	data->so_txt = NULL;
+	data->we_txt = NULL;
+	data->ea_txt = NULL;
 	return (data);
 }
 

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:23:10 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 11:40:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 15:11:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static t_bool ischarmap(char *line)
 			&& *(line + i) != 'S'
 			&& *(line + i) != 'W'
 			&& *(line + i) != 'E')
-			return (false)
+			return (false);
 		i++;
 	}
 	return (true);
@@ -90,23 +90,20 @@ int	convertmap(t_data *data, t_list	*maptmp)
 	row = listlen(maptmp);
 	col = linesize(maptmp);
 	i = 0;
-	data->map = new_matrix(row, col)
+	data->map = new_matrix(row, col);
 	if (data->map == NULL)
 		return (false);
 	while (maptmp)
 	{
 		if (ischarmap(maptmp->data) == false)
 			return (false);
-		j = 0;
-		while (j < col && *(maptmp->data + j))
-		{
+		j = -1;
+		while (++j < col && *(maptmp->data + j))
 			data->map->pxl[i][j] = maptmp->data[j];
-			j++
-		}
 		while (j < col)
 			data->map->pxl[i][j++] = ' ';
-		i++;
 		maptmp = maptmp->next;
+		i++;
 	}
 	return (true);
 }

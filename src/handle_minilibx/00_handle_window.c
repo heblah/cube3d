@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_window_management.c                             :+:      :+:    :+:   */
+/*   00_handle_window.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 09:50:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 15:08:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	close_window(t_data *data)
 		free(data->mlx_ptr);
 		data->mlx_ptr = NULL;
 	}
-	/* free all */
+	memg(PURGE, 0, NULL, 0);
 	return (exit(0), 0);
 }
