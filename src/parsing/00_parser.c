@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 12:25:12 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 13:00:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static t_bool	check_extension(char *ext, char *file)
 	len_ext = ft_strlen(ext);
 	len_file = ft_strlen(file);
 	if (ft_strncmp(ext, file + len_file - len_ext, len_ext) != 0)
-	{
-		data->error = true;
 		return (false);
-	}
 	return (true);
 }
 
@@ -33,13 +30,13 @@ static int	openfile(char *path2file, char *ext)
 	int	fd;
 
 	if (ext != NULL && check_extension(ext, path2file) == false)
-		return (data->error = true, -1);
+		return (-1);
 	fd = open(path2file, O_RDONLY | O_DIRECTORY);
 	if (fd == -1)
 	{
 		fd = open(path2file, O_RDONLY);
 		if (fd == -1)
-			return (data->error = true, -1);
+			return (-1);
 	}
 	else
 	{
@@ -49,7 +46,7 @@ static int	openfile(char *path2file, char *ext)
 				ft_putstr_fd(".\n", 2),
 				data->error = true, -1);
 		else
-			return (data->error = true, -1);
+			return (-1);
 	}
 	return (fd);
 }
@@ -74,7 +71,7 @@ static char	*get_texture(char *path)
 	}
 	else if (check_extension(".xpm", path) == false)
 		ft_putstr_fd("Error : texture has to be in xpm format.\n", 2);
-	return (data->error = true, NULL);
+	return (NULL);
 }
 
 static t_color	getcolor(char *color_txt)
@@ -87,8 +84,7 @@ static t_color	getcolor(char *color_txt)
 	while (*(color_txt + i))
 	{
 		if ((color_txt[i] < '0' || color_txt[i] > '9') && color_txt[i] != ',')
-			return (ft_putstr_fd("Error : wrong format color.\n", 2),
-				data->error = true, color);
+			return (ft_putstr_fd("Error : wrong format color.\n", 2), color);
 		i++;
 	}
 	color.red = ft_atoi(color_txt);
