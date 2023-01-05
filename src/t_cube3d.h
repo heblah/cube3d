@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 14:46:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:18:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,14 @@ typedef union u_color
 		uint8_t	red;
 	};
 }	t_color;
+
+/* t_point structure ======================================================== */
+typedef struct s_point
+{
+	int	x;
+	int	y;
+	int	z;
+}		t_point;
 
 /* t_data =================================================================== */
 typedef struct s_data
