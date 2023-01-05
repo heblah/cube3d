@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/04 16:45:47 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:12:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_img
 /* t_matrix : matrix of space coordinates =================================== */
 typedef struct s_matrix
 {
-	double	**pxl;
+	int		**pxl;
 	int		i;
 	int		row;
 	int		j;
@@ -58,6 +58,7 @@ typedef struct s_matrix
 typedef enum e_label
 {
 	PARSE,
+	DATA,
 	LIBFT,
 	OTHER,
 }	t_label;
@@ -112,6 +113,7 @@ typedef struct s_data
 	t_img		*old_img;
 	char		*path2map;
 	t_img		*img;
+	t_bool		error;
 	t_garbage	*garbage;
 	t_list		*map_tmp;
 	t_matrix	*map;
