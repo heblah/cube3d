@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 14:56:01 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/06 00:42:07 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 		new_img(&data);
 		mlx_loop_hook(data.mlx_ptr, &render, &data);
 		*/
+		print_map(data);
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, &data);
 		mlx_hook(data->win_ptr, 17, 1L << 0, &close_window, data);

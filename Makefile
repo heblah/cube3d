@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+         #
+#    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/05 15:13:41 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/05 21:20:03 by awallet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,11 @@ MTRX_DIR	= ./src/matrix/
 MTRX		= 00_matrix_utils.c
 MTRX		+= 
 SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
+
+TST_DIR 	= ./src/test/
+TST			= ray.c
+TST			+=
+SRC			+= $(addprefix ${TST_DIR}, ${TST})
 
 UTILS_DIR	= ./src/utils/
 UTILS		= 00_garbage_memory.c 01_list.c

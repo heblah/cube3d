@@ -46,6 +46,9 @@ int		convertmap(t_data *data, t_list	*maptmp);
 /* ./parsing/02_parser.c ==================================================== */
 t_bool	checkparsing(t_data *data);
 
+/* ./test/ray.c ============================================================= */
+void	print_map(t_data *d);
+
 /* ./utils/00_garbage_memory.c ============================================== */
 void	*free_label(t_garbage *garbage, t_label label);
 void	*free_adr(t_garbage *garbage, void *adr);

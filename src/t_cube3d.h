@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_cube3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 16:18:29 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/06 00:17:03 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define DBG printf("here: %s:%d\n", __func__, __LINE__);
 # define W_WIDTH		1920
-# define W_HEIGHT		1080
+# define W_HEIGHT		980
 # define MLX_ERROR 		-1
 # define BACKGROUND 	0x2F4F4F
 # define GREEN		 	0x3A9D23
@@ -114,6 +114,12 @@ typedef struct s_point
 	int	z;
 }		t_point;
 
+typedef struct s_player
+{
+	int	x;
+	int	y;
+}	t_player;
+
 /* t_data =================================================================== */
 typedef struct s_data
 {
@@ -127,6 +133,7 @@ typedef struct s_data
 	t_matrix	*map;
 	t_color		floor;
 	t_color		ceil;
+	t_player	player;
 	char		*no_txt;
 	char		*so_txt;
 	char		*we_txt;

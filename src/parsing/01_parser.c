@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:23:10 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 15:11:53 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/06 00:38:34 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	convertmap(t_data *data, t_list	*maptmp)
 	int	j;
 
 	row = listlen(maptmp);
-	col = linesize(maptmp);
+	col = linesize(maptmp) + 1; //a corriger il oublie une ligne.
 	i = 0;
 	data->map = new_matrix(row, col);
 	if (data->map == NULL)
