@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:23:10 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/06 00:38:34 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/08 12:35:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*rm_nl(char *gnl)
 	int	len;
 
 	len = ft_strlen(gnl);
-	if (len > 0)
+	if (len > 0 && *(gnl + len - 1) == '\n')
 		*(gnl + len - 1) = '\0';
 	return (gnl);
 }
@@ -71,8 +71,8 @@ static int	linesize(t_list *first)
 		i = 0;
 		while (*(first->data + i))
 		{
-			if (i > len)
-				len = i;
+			if (i >= len)
+				len++;
 			i++;
 		}
 		first = first->next;
@@ -88,7 +88,7 @@ int	convertmap(t_data *data, t_list	*maptmp)
 	int	j;
 
 	row = listlen(maptmp);
-	col = linesize(maptmp) + 1; //a corriger il oublie une ligne.
+	col = linesize(maptmp);
 	i = 0;
 	data->map = new_matrix(row, col);
 	if (data->map == NULL)
@@ -102,6 +102,7 @@ int	convertmap(t_data *data, t_list	*maptmp)
 			data->map->pxl[i][j] = maptmp->data[j];
 		while (j < col)
 			data->map->pxl[i][j++] = ' ';
+		printf("map[%d] = %ls\n", i, data->map->pxl[i]);
 		maptmp = maptmp->next;
 		i++;
 	}
