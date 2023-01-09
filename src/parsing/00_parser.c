@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/09 11:23:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:58:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,25 +76,28 @@ char	*get_texture(char *path)
 t_color	getcolor(char *color_txt)
 {
 	t_color	color;
+	int		red;
+	int		green;
+	int		blue;
 	int		i;
 
 	color.rgb = UINT_MAX;
-	i = 0;
-	while (*(color_txt + i))
-	{
+	i = -1;
+	while (*(color_txt + ++i))
 		if ((color_txt[i] < '0' || color_txt[i] > '9') && color_txt[i] != ',')
 			return (ft_putstr_fd("Error : wrong format color.\n", 2), color);
-		i++;
-	}
+	red = ft_atoi(color_txt);
+	while (*color_txt && *color_txt != ',')
+		color_txt++;
+	green = ft_atoi(++color_txt);
+	while (*color_txt && *color_txt != ',')
+		color_txt++;
+	blue = ft_atoi(++color_txt);
+	if (red < 0 || green < 0 || blue < 0
+		|| red > 255 || green > 255 || blue > 255)
+		return (ft_putstr_fd("Error : wrong format color.\n", 2), color);
 	color.rgb = 0;
-	color.red = ft_atoi(color_txt);
-	while (*color_txt && *color_txt != ',')
-		color_txt++;
-	color.green = ft_atoi(++color_txt);
-	while (*color_txt && *color_txt != ',')
-		color_txt++;
-	color.blue = ft_atoi(++color_txt);
-	return (color);
+	return (color.red = red, color.green = green, color.blue = blue, color);
 }
 
 /* list_addback has to be used to fill map_tmp */
