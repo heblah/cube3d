@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:23:10 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/08 12:35:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:33:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	getmapdata(t_data *data, char *gnl)
 		data->ceil = getcolor(gnl + 2);
 }
 
-static t_bool ischarmap(char *line)
+static t_bool	ischarmap(char *line)
 {
 	size_t	i;
 

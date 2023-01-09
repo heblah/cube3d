@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/09 09:55:19 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/09 14:42:02 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,10 @@ MTRX		= 00_matrix_utils.c
 MTRX		+= 
 SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
 
-TST_DIR 	= ./src/test/
-TST			= ray.c
-TST			+=
-SRC			+= $(addprefix ${TST_DIR}, ${TST})
+RAY_DIR 	= ./src/raycasting/
+RAY			= ray.c
+RAY			+=
+SRC			+= $(addprefix ${RAY_DIR}, ${RAY})
 
 UTILS_DIR	= ./src/utils/
 UTILS		= 00_garbage_memory.c 01_list.c

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/06 00:17:03 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/09 17:32:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,14 @@ typedef struct s_point
 {
 	int	x;
 	int	y;
-	int	z;
+	//int	z;
 }		t_point;
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	double	angle;
 }	t_player;
 
 /* t_data =================================================================== */

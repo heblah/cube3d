@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:48:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/09 11:29:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:33:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static unsigned int	player(t_matrix *map)
 		ft_putstr_fd("Error : number of player on the map != 1.\n", 2);
 	return (n);
 }
-
 
 t_bool	checkparsing(t_data *data)
 {

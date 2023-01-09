@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_handle_events.c                                 :+:      :+:    :+:   */
+/*   01_handle_events.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
-/*   Updated: 2022/12/22 16:17:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:24:18 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		close_window(data);
+	printf("keysym = %c\n", keysym);
 	/*
 	else if (keysym == XK_Left || keysym == XK_Right
 		|| keysym == XK_Up || keysym == XK_Down)
