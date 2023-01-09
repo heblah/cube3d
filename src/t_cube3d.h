@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/09 17:32:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:07:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@
 # define ORANGE 		0xFF8C00
 # define WHITE	 		0xFFFFFF
 # define BLACK	 		0x000000
+# define FOV			60
+# define N_RAYS			W_WIDTH
+# define N_WALLS		10
+# define WALL_HEIGHT	100
+# define MAX_DISTANCE	W_WIDTH
 
 /* t_img ==================================================================== */
 typedef struct s_img
@@ -116,10 +121,16 @@ typedef struct s_point
 
 typedef struct s_player
 {
-	int		x;
-	int		y;
+	double	x;
+	double	y;
 	double	angle;
 }	t_player;
+
+typedef struct s_wall
+{
+	double	x;
+	double	y;
+}			t_wall;
 
 /* t_data =================================================================== */
 typedef struct s_data
