@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/05 15:31:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:23:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	parser(t_data *data, char *path2map)
 		gnl = rm_nl(get_next_line(fd));
 	}
 	if (convertmap(data, data->map_tmp) == false)
-		ft_putstr_fd("Error : wrong map format.\n", 2);
+		return (ft_putstr_fd("Error : wrong map format.\n", 2), -1);
 	if (checkparsing(data) == false)
 		return (-1);
 	return (fd);
