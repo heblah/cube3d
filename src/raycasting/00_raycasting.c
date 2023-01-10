@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 17:02:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:16:41 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	raycast(t_data *data)
 			data->walldist = data->sidedist.x - data->deltadist.x;
 		else
 			data->walldist = data->sidedist.y - data->deltadist.y;
-		getcolumns(data);
+		getcolumns(data, x);
 		x++;
 	}
 	return (0);
