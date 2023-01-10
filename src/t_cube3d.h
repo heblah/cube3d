@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 14:55:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:21:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@
 # define PLANE			data->plane
 # define RAY			data->ray
 # define MAP			data->map
-# define DT				data->
 
 /* t_img ==================================================================== */
 typedef struct s_img
@@ -165,9 +164,12 @@ typedef struct s_data
 	t_dvect		sidedist;
 	t_dvect		deltadist;
 	t_vect		step;
+	double		walldist;
 	int			hit;
 	int			side;
-	double		walldist;
+	int			lineheight;
+	int			drawstart;
+	int			drawend;
 }				t_data;
 
 /* e_freeflag : to chose what matrix freed ================================== */

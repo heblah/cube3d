@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 15:19:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:36:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,10 @@ int	raycast(t_data *data)
 		intrays(data, x);
 		getdeltadist(data);
 		getstep(data);
+		dda(data);
+		if (data->side == 0)
+			data->walldist = data->sidedist.x - data->deltadist.x;
+		else
+			data->walldist = data->sidedist.y - data->deltadist.y;
 	}
 }
