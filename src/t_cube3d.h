@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/09 18:07:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:55:33 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # define DBG printf("here: %s:%d\n", __func__, __LINE__);
 # define W_WIDTH		1920
 # define W_HEIGHT		980
+
 # define MLX_ERROR 		-1
+
 # define BACKGROUND 	0x2F4F4F
 # define GREEN		 	0x3A9D23
 # define RED		 	0xFF0000
@@ -34,11 +36,13 @@
 # define ORANGE 		0xFF8C00
 # define WHITE	 		0xFFFFFF
 # define BLACK	 		0x000000
-# define FOV			60
-# define N_RAYS			W_WIDTH
-# define N_WALLS		10
-# define WALL_HEIGHT	100
-# define MAX_DISTANCE	W_WIDTH
+
+# define PLAYER			data->player
+# define CAM			data->cam
+# define PLANE			data->plane
+# define RAY			data->ray
+# define MAP			data->map
+# define DT				data->
 
 /* t_img ==================================================================== */
 typedef struct s_img
@@ -112,44 +116,58 @@ typedef union u_color
 }	t_color;
 
 /* t_point structure ======================================================== */
-typedef struct s_point
+typedef struct s_vectd
+{
+	double	x;
+	double	y;
+	double	z;
+}			t_dvect;
+
+typedef struct s_vect
 {
 	int	x;
 	int	y;
-	//int	z;
-}		t_point;
+	int	z;
+}		t_vect;
 
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	angle;
-}	t_player;
-
-typedef struct s_wall
-{
-	double	x;
-	double	y;
-}			t_wall;
+	t_dvect	pos;
+	t_dvect	dir;
+	//double	angle;
+}			t_player;
 
 /* t_data =================================================================== */
 typedef struct s_data
 {
+	t_garbage	*garbage;
+	/* mlx pointers */
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		*old_img;
-	char		*path2map;
 	t_img		*img;
-	t_garbage	*garbage;
+	/* parsing */
+	char		*path2map;
 	t_list		*map_tmp;
 	t_matrix	*map;
-	t_color		floor;
-	t_color		ceil;
-	t_player	player;
 	char		*no_txt;
 	char		*so_txt;
 	char		*we_txt;
 	char		*ea_txt;
+	t_color		floor;
+	t_color		ceil;
+	/* raycasting */
+	t_player	player;
+	t_dvect		plane;
+	t_dvect		cam;
+	t_dvect		ray;
+	t_vect		map_pos;
+	t_dvect		sidedist;
+	t_dvect		deltadist;
+	t_vect		step;
+	int			hit;
+	int			side;
+	double		walldist;
 }				t_data;
 
 /* e_freeflag : to chose what matrix freed ================================== */
