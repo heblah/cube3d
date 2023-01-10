@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/06 00:42:07 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/10 16:54:13 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int	main(int argc, char **argv)
 		new_img(&data);
 		mlx_loop_hook(data.mlx_ptr, &render, &data);
 		*/
+		data->img = memg(MALLOC, sizeof(t_img), NULL, OTHER);
+		data->img->mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
+		data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
+				&data->img->line_len, &data->img->endian);
 		print_map(data);
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, &data);

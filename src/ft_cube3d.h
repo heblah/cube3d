@@ -51,11 +51,15 @@ void	init_positions(t_data *data);
 int		raycast(t_data *data);
 
 /* ./raycasting/01_raycasting.c ============================================= */
-void getcolumns(t_data *data)
-	;
+void getcolumns(t_data *data);
 
 /* ./raycasting/ray.c ======================================================= */
 void	draw_filled_square(void *mlx, void *win, int x, int y, int size, int color);
+
+/* ./raycasting/ray.c ======================================================= */
+void	img_pix_put(t_img *img, int x, int y, int color);
+void	draw_filled_square(t_img *img, int x, int y, int size, int color);
+void	render_background(t_img *img, int color);
 void	print_map(t_data *data);
 
 /* ./utils/00_garbage_memory.c ============================================== */
