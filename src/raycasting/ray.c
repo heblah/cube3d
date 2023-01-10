@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 21:04:17 by awallet           #+#    #+#             */
-/*   Updated: 2023/01/10 16:59:06 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/10 22:03:40 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,19 @@ void	print_map(t_data *data)
 		while (++x < data->map->col)
 		{
 			if (data->map->pxl[y][x] == '1' || data->map->pxl[y][x] == ' ')
-				draw_filled_square(data->img, x * 64, y * 64, 64, 0x00FF00);
+				draw_filled_square(data->img, x * 32, y * 32, 32, 0x00FF00);
 			else if (data->map->pxl[y][x] == 'N' || data->map->pxl[y][x] == 'S'
 				|| data->map->pxl[y][x] == 'W' || data->map->pxl[y][x] == 'E')
-				draw_filled_square(data->img, x * 64, y * 64, 32, 0xFF0000);
+			{
+				if (data->player.pos.x == 0 && data->player.pos.y == 0)
+				{
+					data->player.pos.x = (double)x;
+					data->player.pos.y = (double)y;
+				}
+				printf("(debug-ray) (pos y: %f pos x: %f)\n",
+					data->player.pos.y, data->player.pos.x);
+				draw_filled_square(data->img, data->player.pos.x * 32, data->player.pos.y * 32, 32, 0xFF0000);
+			}
 		}
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->mlx_img, 0, 0);
