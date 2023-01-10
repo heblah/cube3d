@@ -46,8 +46,17 @@ int		convertmap(t_data *data, t_list	*maptmp);
 /* ./parsing/02_parser.c ==================================================== */
 t_bool	checkparsing(t_data *data);
 
-/* ./test/ray.c ============================================================= */
-void	print_map(t_data *d);
+/* ./raycasting/00_raycasting.c ============================================= */
+void	init_positions(t_data *data);
+int		raycast(t_data *data);
+
+/* ./raycasting/01_raycasting.c ============================================= */
+void getcolumns(t_data *data)
+	;
+
+/* ./raycasting/ray.c ======================================================= */
+void	draw_filled_square(void *mlx, void *win, int x, int y, int size, int color);
+void	print_map(t_data *data);
 
 /* ./utils/00_garbage_memory.c ============================================== */
 void	*free_label(t_garbage *garbage, t_label label);

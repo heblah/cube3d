@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/09 14:42:02 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/10 17:03:57 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ MTRX		+=
 SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
 
 RAY_DIR 	= ./src/raycasting/
-RAY			= ray.c
+RAY			= 00_raycasting.c 01_raycasting.c ray.c
 RAY			+=
 SRC			+= $(addprefix ${RAY_DIR}, ${RAY})
 

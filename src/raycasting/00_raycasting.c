@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 15:36:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:02:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	getdeltadist(t_data *data)
 	if (data->ray.x == 0)
 		data->deltadist.x = INT_MAX;
 	else
-		data->deltadist.x = abs(1 / data->ray.x);
+		data->deltadist.x = fabs(1 / data->ray.x);
 	if (data->ray.y == 0)
 		data->deltadist.y = INT_MAX;
 	else
-		data->deltadist.y = abs(1 / data->ray.y);
+		data->deltadist.y = fabs(1 / data->ray.y);
 }
 
 static void	getstep(t_data *data)
@@ -88,11 +88,11 @@ static void	dda(t_data *data)
 		}
 		else
 		{
-			data->sidedist.y += data->deltadist.y
+			data->sidedist.y += data->deltadist.y;
 			data->map_pos.y += data->step.y;
-			side = 1;
+			data->side = 1;
 		}
-		if (data->map[data->map_pos.x][data->map_pos.y] > 0)
+		if (data->map->pxl[data->map_pos.x][data->map_pos.y] > 0)
 			data->hit = 1;
 	}
 }
@@ -105,7 +105,7 @@ int	raycast(t_data *data)
 	init_positions(data);
 	while (x < W_WIDTH)
 	{
-		intrays(data, x);
+		initrays(data, x);
 		getdeltadist(data);
 		getstep(data);
 		dda(data);
@@ -113,5 +113,8 @@ int	raycast(t_data *data)
 			data->walldist = data->sidedist.x - data->deltadist.x;
 		else
 			data->walldist = data->sidedist.y - data->deltadist.y;
+		getcolumns(data);
+		x++;
 	}
+	return (0);
 }
