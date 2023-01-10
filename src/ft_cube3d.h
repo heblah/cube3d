@@ -46,8 +46,11 @@ int		convertmap(t_data *data, t_list	*maptmp);
 /* ./parsing/02_parser.c ==================================================== */
 t_bool	checkparsing(t_data *data);
 
-/* ./test/ray.c ============================================================= */
-void	print_map(t_data *d);
+/* ./raycasting/ray.c ======================================================= */
+void	img_pix_put(t_img *img, int x, int y, int color);
+void	draw_filled_square(t_img *img, int x, int y, int size, int color);
+void	render_background(t_img *img, int color);
+void	print_map(t_data *data);
 
 /* ./utils/00_garbage_memory.c ============================================== */
 void	*free_label(t_garbage *garbage, t_label label);

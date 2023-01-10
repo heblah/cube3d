@@ -6,16 +6,33 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 21:04:17 by awallet           #+#    #+#             */
-/*   Updated: 2023/01/09 18:03:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:59:06 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_cube3d.h"
 #include "ft_cube3d.h"
 
+void	img_pix_put(t_img *img, int x, int y, int color)
+{
+	char	*pixel;
+	int		i;
+
+	i = img->bpp - 8;
+	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	while (i >= 0)
+	{
+		if (img->endian != 0)
+			*pixel++ = (color >> i) & 0xFF;
+		else
+			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
+		i -= 8;
+	}
+}
+
 //quelques tests je continue plus tard :p
 //img_put_pix a faire pour gagner en opti.
-void	draw_filled_square(void *mlx, void *win, int x, int y, int size, int color)
+void	draw_filled_square(t_img *img, int x, int y, int size, int color)
 {
 	int	i;
 	int	j;
@@ -25,7 +42,24 @@ void	draw_filled_square(void *mlx, void *win, int x, int y, int size, int color)
 	{
 		j = y - 1;
 		while (++j < y + size)
-			mlx_pixel_put(mlx, win, i, j, color);
+			img_pix_put(img, i, j, color);
+	}
+}
+
+void	render_background(t_img *img, int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < W_HEIGHT)
+	{
+		j = 0;
+		while (j < W_WIDTH)
+		{
+			img_pix_put(img, j++, i, color);
+		}
+		++i;
 	}
 }
 
@@ -36,18 +70,18 @@ void	print_map(t_data *data)
 
 	y = -1;
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	render_background(data->img, 0x0000FF);
 	while (++y < data->map->row)
 	{
 		x = -1;
-		//printf("line = %d\n", y);
 		while (++x < data->map->col)
 		{
-			//printf("data = [y:%d][x:%d] / %c\n", y, x, data->map->pxl[y][x]);
 			if (data->map->pxl[y][x] == '1' || data->map->pxl[y][x] == ' ')
-				draw_filled_square(data->mlx_ptr, data->win_ptr, x * 64, y * 64, 64, 0x00FF00);
+				draw_filled_square(data->img, x * 64, y * 64, 64, 0x00FF00);
 			else if (data->map->pxl[y][x] == 'N' || data->map->pxl[y][x] == 'S'
 				|| data->map->pxl[y][x] == 'W' || data->map->pxl[y][x] == 'E')
-				draw_filled_square(data->mlx_ptr, data->win_ptr, x * 64, y * 64, 64, 0xFF0000);
+				draw_filled_square(data->img, x * 64, y * 64, 32, 0xFF0000);
 		}
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->mlx_img, 0, 0);
 }
