@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 13:43:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:58:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include "ft_libft.h"
 # include "mlx.h"
 
-# define DBG printf("here: %s:%d\n", __func__, __LINE__);
+//# define DBG printf("here: %s:%d\n", __func__, __LINE__);
 # define W_WIDTH		1920
-# define W_HEIGHT		980
+# define W_HEIGHT		1080
 
 # define MLX_ERROR 		-1
 
@@ -36,12 +36,6 @@
 # define ORANGE 		0xFF8C00
 # define WHITE	 		0xFFFFFF
 # define BLACK	 		0x000000
-
-# define PLAYER			data->player
-# define CAM			data->cam
-# define PLANE			data->plane
-# define RAY			data->ray
-# define MAP			data->map
 
 /* t_img ==================================================================== */
 typedef struct s_img
@@ -85,7 +79,7 @@ typedef enum e_bool
 {
 	false = 0,
 	true = 1
-} 	t_bool;
+}	t_bool;
 
 /* Garbage collector structure ============================================== */
 typedef struct s_garbage

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 11:13:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:00:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	verticaldraw(t_data *data, int x)
 {
-	int	i;
+	int		i;
 	t_color	color;
 	t_color	s_color;
 
@@ -40,12 +40,11 @@ void	verticaldraw(t_data *data, int x)
 void	getcolumns(t_data *data, int x)
 {
 	data->lineheight = W_HEIGHT / data->walldist;
-	data->drawstart = - data->lineheight / 2 + W_HEIGHT / 2;
+	data->drawstart = -data->lineheight / 2 + W_HEIGHT / 2;
 	if (data->drawstart < 0)
 		data->drawstart = 0;
 	data->drawend = data->lineheight / 2 + W_HEIGHT / 2;
 	if (data->drawend >= W_HEIGHT)
 		data->drawend = W_HEIGHT - 1;
 	verticaldraw(data, x);
-	/* appeler vertical draw pour parcourir toute la hauteur */
 }
