@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 17:18:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:00:40 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ void	mvforward(t_data *data, t_player *player)
 	int	i;
 	int	j;
 
-	i = player->pos.x + player->dir.x * player->mvspeed;
+	i = (double)player->pos.x + player->dir.x * player->mvspeed;
 	j = player->pos.y;
-	printf("player->pos.x + player->dir.x * player->mvspeed = %f\n", player->pos.x + player->dir.x * player->mvspeed);
-	printf("i = %d, j = %d\n", i, j);
-	printf("map[%d][%d] = %c|%d\n", i, j, data->map->pxl[i][j], data->map->pxl[i][j]);
 	if (data->map->pxl[i][j] == '0'
 		|| data->map->pxl[i][j] == 'N'
 		|| data->map->pxl[i][j] == 'S'
@@ -37,6 +34,13 @@ void	mvforward(t_data *data, t_player *player)
 		|| data->map->pxl[i][j] == 'E'
 		|| data->map->pxl[i][j] == 'W')
 		player->pos.y += player->dir.y * player->mvspeed;
+	printf("===== %s:%s:%d =====\n", __FILE__, __func__, __LINE__);
+	printf("player->pos.x = %f\n", player->pos.x);
+	printf("player->pos.y = %f\n", player->pos.y);
+	printf("data->player.pos.x = %f\n", data->player.pos.x);
+	printf("data->player.pos.y = %f\n", data->player.pos.y);
+	printf("(i, j) = (%d, %d)\n", i, j);
+	printf("\n");
 }
 
 void	mvbackward(t_data *data, t_player *player)
