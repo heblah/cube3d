@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 21:13:57 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/11 11:14:11 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,24 @@ int	main(int argc, char **argv)
 			return (MLX_ERROR);
 		/*
 		new_img(&data);
-		mlx_loop_hook(data.mlx_ptr, &render, &data);
 		*/
 		data->img = memg(MALLOC, sizeof(t_img), NULL, OTHER);
 		data->img->mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
 		data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
 				&data->img->line_len, &data->img->endian);
-		data->player.pos.x = 0;
-		data->player.pos.y = 0;
-		print_map(data);
-		raycast(data);
+		data->player.pos.x = 8;
+		data->player.pos.y = 8;
+		data->map_pos.x = 8;
+		data->map_pos.y = 8;
+		init_positions(data);
+		//print_map(data);
+		//raycast(data);
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, &data);
 		mlx_hook(data->win_ptr, 17, 1L << 0, &close_window, data);
 		mlx_hook(data->win_ptr, ButtonPress, ButtonPressMask,
 			&handle_nothing, data); /* handle_mouse */
+		mlx_loop_hook(data->mlx_ptr, &render, data);
 		mlx_loop(data->mlx_ptr);
 	}
 	else if (argc != 2)

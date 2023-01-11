@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 10:07:27 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:10:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (MLX_ERROR);
-	clear_window(data);
+	//clear_window(data);
+	raycast(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->mlx_img, 0, 0);
 	return (0);

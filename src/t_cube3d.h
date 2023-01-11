@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 09:48:17 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:51:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,12 @@ typedef struct s_vectd
 {
 	double	x;
 	double	y;
-	double	z;
 }			t_dvect;
 
 typedef struct s_vect
 {
 	int	x;
 	int	y;
-	int	z;
 }		t_vect;
 
 typedef struct s_player

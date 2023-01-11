@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 10:06:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:13:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	verticaldraw(t_data *data, int x)
 	}
 }
 
-void	getcolumns(t_data *data, int x __attribute__((unused)))
+void	getcolumns(t_data *data, int x)
 {
 	data->lineheight = W_HEIGHT / data->walldist;
 	data->drawstart = - data->lineheight / 2 + W_HEIGHT / 2;
