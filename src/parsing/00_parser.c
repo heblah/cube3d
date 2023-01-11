@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/09 11:58:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:37:34 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ t_color	getcolor(char *color_txt)
 	return (color.red = red, color.green = green, color.blue = blue, color);
 }
 
-/* list_addback has to be used to fill map_tmp */
 int	parser(t_data *data, char *path2map)
 {
 	int		fd;
@@ -108,7 +107,7 @@ int	parser(t_data *data, char *path2map)
 
 	fd = openfile(path2map, ".cub");
 	if (fd == -1)
-		return (ft_putstr_fd("Error : invalid map.\n", 2), -1);
+		return (ft_putstr_fd("Error : invalid map extension.\n", 2), -1);
 	gnl = rm_nl(get_next_line(fd));
 	while (gnl != NULL)
 	{

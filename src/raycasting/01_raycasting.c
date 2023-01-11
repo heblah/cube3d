@@ -6,14 +6,14 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 14:00:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:47:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <t_cube3d.h>
 #include <ft_cube3d.h>
 
-void	verticaldraw(t_data *data, int x)
+static void	draw_walls(t_data *data, int x)
 {
 	int		i;
 	t_color	color;
@@ -32,13 +32,16 @@ void	verticaldraw(t_data *data, int x)
 			data->color = color;
 		else
 			data->color = s_color;
-		img_pixel_put(data->img, x, i, data);
+		img_pixel_put(data->img, x, i, data->color);
 		i++;
 	}
 }
 
-void	getcolumns(t_data *data, int x)
+void	getwalls(t_data *data, int x)
 {
+	int	i;
+
+	i = 0;
 	data->lineheight = W_HEIGHT / data->walldist;
 	data->drawstart = -data->lineheight / 2 + W_HEIGHT / 2;
 	if (data->drawstart < 0)
@@ -46,5 +49,13 @@ void	getcolumns(t_data *data, int x)
 	data->drawend = data->lineheight / 2 + W_HEIGHT / 2;
 	if (data->drawend >= W_HEIGHT)
 		data->drawend = W_HEIGHT - 1;
-	verticaldraw(data, x);
+	while (i < W_HEIGHT)
+	{
+		if (i < W_HEIGHT / 2)
+			img_pixel_put(data->img, x, i, data->ceil);
+		else
+			img_pixel_put(data->img, x, i, data->floor);
+		i++;
+	}
+	draw_walls(data, x);
 }

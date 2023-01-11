@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 14:02:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:40:01 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int	main(int argc, char **argv)
 		mlx_loop(data->mlx_ptr);
 	}
 	else if (argc != 2)
-		ft_putstr_fd("Select one map.\n", 1);
+		ft_putstr_fd("Error: select one map.\n", 1);
 	return (close_window(data), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 13:33:30 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:41:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 static void	initrays(t_data *data, int x)
 {
-	data->map_pos.x = (int)data->player.pos.x;
-	data->map_pos.y = (int)data->player.pos.y;
 	data->cam.x = 2 * x / (double)W_WIDTH - 1;
 	data->ray.x = data->player.dir.x + data->plane.x * data->cam.x;
 	data->ray.y = data->player.dir.y + data->plane.y * data->cam.x;
+	data->map_pos.x = (int)data->player.pos.x;
+	data->map_pos.y = (int)data->player.pos.y;
 }
 
 static void	getdeltadist(t_data *data)
@@ -64,6 +64,7 @@ static void	getstep(t_data *data)
 
 static void	dda(t_data *data)
 {
+	data->hit = 0;
 	while (data->hit == 0)
 	{
 		if (data->sidedist.x < data->sidedist.y)
@@ -92,7 +93,7 @@ static void	dda(t_data *data)
 			data->map_pos.x, data->map_pos.y);
 */
 
-int	raycast(t_data *data)
+int	raycasting(t_data *data)
 {
 	int	x;
 
@@ -104,10 +105,10 @@ int	raycast(t_data *data)
 		getstep(data);
 		dda(data);
 		if (data->side == 0)
-			data->walldist = (data->sidedist.x - data->deltadist.x);
+			data->walldist = data->sidedist.x - data->deltadist.x;
 		else
-			data->walldist = (data->sidedist.y - data->deltadist.y);
-		getcolumns(data, x);
+			data->walldist = data->sidedist.y - data->deltadist.y;
+		getwalls(data, x);
 		x++;
 	}
 	return (0);

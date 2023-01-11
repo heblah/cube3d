@@ -19,7 +19,7 @@ int			handle_nothing(void);
 /* ./handle_minilibx/02_handle_img.c ======================================== */
 int			clear_window(t_data *data);
 int			render(t_data *data);
-int			img_pixel_put(t_img *img, int x2d, int y2d, t_data *data);
+int			img_pixel_put(t_img *img, int x, int y, t_color color);
 t_img		*new_img(t_data *data);
 
 /* ./main/00_main.c ========================================================= */
@@ -50,11 +50,10 @@ t_bool		checkparsing(t_data *data);
 void		initplayer(t_data *data);
 
 /* ./raycasting/00_raycasting.c ============================================= */
-int			raycast(t_data *data);
+int			raycasting(t_data *data);
 
 /* ./raycasting/01_raycasting.c ============================================= */
-void		verticaldraw(t_data *data, int x);
-void		getcolumns(t_data *data, int x);
+void		getwalls(t_data *data, int x);
 
 /* ./raycasting/ray.c ======================================================= */
 void		img_pix_put(t_img *img, int x, int y, int color);
