@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 17:10:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:18:44 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	mvforward(t_data *data, t_player *player)
 
 	i = player->pos.x + player->dir.x * player->mvspeed;
 	j = player->pos.y;
+	printf("player->pos.x + player->dir.x * player->mvspeed = %f\n", player->pos.x + player->dir.x * player->mvspeed);
+	printf("i = %d, j = %d\n", i, j);
+	printf("map[%d][%d] = %c|%d\n", i, j, data->map->pxl[i][j], data->map->pxl[i][j]);
 	if (data->map->pxl[i][j] == '0'
 		|| data->map->pxl[i][j] == 'N'
 		|| data->map->pxl[i][j] == 'S'
