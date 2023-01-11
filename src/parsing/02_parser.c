@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:48:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/09 17:33:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:08:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ static t_bool	isempty(t_matrix *map, int i, int j)
 		return (true);
 	else if (j + 1 < map->col
 		&& (map->pxl[i][j + 1] == ' ' || map->pxl[i][j + 1] == '\t'))
+		return (true);
+	else if ((j + 1 == map->col && map->pxl[i][j] == '0')
+		|| (i + 1 == map->row && map->pxl[i][j] == '0'))
 		return (true);
 	return (false);
 }

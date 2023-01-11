@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 22:47:37 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/11 09:19:05 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,13 @@ static void	dda(t_data *data)
 		if (data->map->pxl[data->map_pos.y][data->map_pos.x] == '1')
 		{
 			data->hit = 1;
-			draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0x000000);
+			//draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0x000000);
 		}
 		else
 			draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0xFFFF00);
 		printf("(debug-hit) char = %c (pos x: %d pos y: %d)\n",
-			data->map->pxl[data->map_pos.y][data->map_pos.x],
-			data->map_pos.x, data->map_pos.y);
+				data->map->pxl[data->map_pos.y][data->map_pos.x],
+				data->map_pos.x, data->map_pos.y);
 	}
 }
 
