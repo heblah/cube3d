@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 15:51:21 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:00:43 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,8 @@ typedef struct s_player
 {
 	t_dvect	pos;
 	t_dvect	dir;
-	//double	angle;
+	double	rotspeed;
+	double	mvspeed;
 }			t_player;
 
 /* t_data =================================================================== */

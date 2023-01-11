@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 14:02:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:07:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,15 @@ int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		close_window(data);
-	printf("keysym = %c\n", keysym);
+	else if (keysym == 'w')
+		mvforward(data, &data->player);
+	else if (keysym == 'a')
+		rot2left(data, &data->player, &data->plane);
+	else if (keysym == 's')
+		mvbackward(data, &data->player);
+	else if (keysym == 'd')
+		rot2right(data, &data->player, &data->plane);
+	printf("keysym = %d\n", keysym);
 	return (0);
 }
 /*

@@ -49,6 +49,12 @@ t_bool		checkparsing(t_data *data);
 /* ./parsing/03_initplayer.c ================================================ */
 void		initplayer(t_data *data);
 
+/* ./parsing/04_moves.c ===================================================== */
+void		mvforward(t_data *data, t_player *player);
+void		mvbackward(t_data *data, t_player *player);
+void		rot2left(t_data *data, t_player *player, t_dvect *plane);
+void		rot2right(t_data *data, t_player *player, t_dvect *plane);
+
 /* ./raycasting/00_raycasting.c ============================================= */
 int			raycasting(t_data *data);
 

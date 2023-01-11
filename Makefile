@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/11 13:29:58 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/11 17:04:33 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ MAIN		+=
 SRC			+= $(addprefix ${MAIN_DIR}, ${MAIN})
 
 PARS_DIR	= ./src/parsing/
-PARS		= 00_parser.c 01_parser.c 02_parser.c 03_initplayer.c
+PARS		= 00_parser.c 01_parser.c 02_parser.c 03_initplayer.c 04_moves.c
 PARS		+= 
 SRC			+= $(addprefix ${PARS_DIR}, ${PARS})
 
