@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:23:10 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/09 17:33:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:51:56 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int	convertmap(t_data *data, t_list	*maptmp)
 			data->map->pxl[i][j] = maptmp->data[j];
 		while (j < col)
 			data->map->pxl[i][j++] = ' ';
-		printf("map[%d] = %ls\n", i, data->map->pxl[i]);
 		maptmp = maptmp->next;
 		i++;
 	}

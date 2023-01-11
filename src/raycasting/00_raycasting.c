@@ -6,24 +6,12 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 11:55:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:33:30 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <t_cube3d.h>
 #include <ft_cube3d.h>
-
-void	init_positions(t_data *data)
-{
-	data->player.pos.z = 0;
-	data->player.dir.x = 0;
-	data->player.dir.y = 1;
-	data->player.dir.z = 0;
-	data->plane.x = 0;
-	data->plane.y = 0.5;
-	data->plane.z = 0;
-	data->hit = 0;
-}
 
 static void	initrays(t_data *data, int x)
 {
@@ -95,13 +83,13 @@ static void	dda(t_data *data)
 	}
 }
 /*
-	draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0x000000);
-}
-else
-	draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0xFFFF00);
-printf("(debug-hit) char = %c (pos x: %d pos y: %d)\n",
-		data->map->pxl[data->map_pos.y][data->map_pos.x],
-		data->map_pos.x, data->map_pos.y);
+		draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0x000000);
+	}
+	else
+		draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0xFFFF00);
+	printf("(debug-hit) char = %c (pos x: %d pos y: %d)\n",
+			data->map->pxl[data->map_pos.y][data->map_pos.x],
+			data->map_pos.x, data->map_pos.y);
 */
 
 int	raycast(t_data *data)

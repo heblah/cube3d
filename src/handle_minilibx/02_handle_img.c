@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 10:10:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:46:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,16 @@ int	img_pixel_put(t_img *img, int x2d, int y2d, t_data *data)
 	return (0);
 }
 
-/*
 t_img	*new_img(t_data *data)
 {
-	t_img	*new;
+	//t_img	*new;
 
-	new = malloc(1 * sizeof(t_img));
-	if (new == NULL)
+	data->img = memg(MALLOC, 1 * sizeof(t_img), NULL, OTHER);
+	if (data->img == NULL)
 		return (NULL);
-	new->mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
-	new->addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp,
-			&data->img.line, &data->img.endian);
-	data->old_img = data->img;
-	data->img = new;
-	//mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-	// c'est plus rapide de détruire l'ancienne image que de la repeindre en noir
-	return (new);
+	data->img->mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
+			&data->img->line_len, &data->img->endian);
+	//data->img = new;
+	return (data->img);
 }
-*/

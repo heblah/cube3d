@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 11:14:11 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:35:16 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_data	*initdata(void)
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->old_img = NULL;
-	data->img = NULL;
 	data->garbage = NULL;
 	data->map_tmp = NULL;
 	data->map = NULL;
@@ -46,22 +45,9 @@ int	main(int argc, char **argv)
 	data = initdata();
 	if (argc == 2 && parser(data, argv[1]) != -1)
 	{
-		if (open_window(data) == MLX_ERROR)
+		if (open_window(data) == MLX_ERROR || new_img(data) == NULL)
 			return (MLX_ERROR);
-		/*
-		new_img(&data);
-		*/
-		data->img = memg(MALLOC, sizeof(t_img), NULL, OTHER);
-		data->img->mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
-		data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
-				&data->img->line_len, &data->img->endian);
-		data->player.pos.x = 8;
-		data->player.pos.y = 8;
-		data->map_pos.x = 8;
-		data->map_pos.y = 8;
-		init_positions(data);
-		//print_map(data);
-		//raycast(data);
+		initplayer(data);
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, &data);
 		mlx_hook(data->win_ptr, 17, 1L << 0, &close_window, data);
