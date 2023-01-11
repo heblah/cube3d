@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 17:22:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:48:17 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ typedef struct s_data
 	char		*ea_txt;
 	t_color		floor;
 	t_color		ceil;
+	t_color		color;
 	/* raycasting */
 	t_player	player;
 	t_dvect		plane;

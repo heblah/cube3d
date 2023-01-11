@@ -6,19 +6,17 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 18:13:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:07:27 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_cube3d.h"
 #include "ft_cube3d.h"
 
-/*
 int	clear_window(t_data *data __attribute__((unused)))
 {
 	return (0);
 }
-*/
 
 int	render(t_data *data)
 {
@@ -37,11 +35,12 @@ int	img_pixel_put(t_img *img, int x2d, int y2d, t_data *data)
 	if (x2d >= 0 && x2d < W_WIDTH && y2d >= 0 && y2d < W_HEIGHT)
 	{
 		pixel = img->addr + (y2d * img->line_len + x2d * (img->bpp / 8));
-		*(int *)pixel = data->color;
+		*(int *)pixel = (int)data->color.rgb;
 	}
 	return (0);
 }
 
+/*
 t_img	*new_img(t_data *data)
 {
 	t_img	*new;
@@ -55,6 +54,7 @@ t_img	*new_img(t_data *data)
 	data->old_img = data->img;
 	data->img = new;
 	//mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-	/* c'est plus rapide de détruire l'ancienne image que de la repeindre en noir */
+	// c'est plus rapide de détruire l'ancienne image que de la repeindre en noir
 	return (new);
 }
+*/

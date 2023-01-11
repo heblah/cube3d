@@ -6,26 +6,36 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 20:54:28 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/11 10:06:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <t_cube3d.h>
 #include <ft_cube3d.h>
 
-// void	verticaldraw(t_data *data, int x)
-// {
-// 	t_color	color;
-// 	t_color	s_color;
+void	verticaldraw(t_data *data, int x)
+{
+	int	i;
+	t_color	color;
+	t_color	s_color;
 
-// 	color.red = 243;
-// 	color.green = 176;
-// 	color.blue = 53;
-// 	s_color.red = 48;
-// 	s_color.green = 78;
-// 	s_color.blue = 100;
-// 	/* tracer les lignes correspondantes */
-// }
+	i = data->drawstart;
+	color.red = 243;
+	color.green = 176;
+	color.blue = 53;
+	s_color.red = 48;
+	s_color.green = 78;
+	s_color.blue = 100;
+	while (i < data->drawend)
+	{
+		if (data->side == 1)
+			data->color = color;
+		else
+			data->color = s_color;
+		img_pixel_put(data->img, x, i, data);
+		i++;
+	}
+}
 
 void	getcolumns(t_data *data, int x __attribute__((unused)))
 {
@@ -36,6 +46,6 @@ void	getcolumns(t_data *data, int x __attribute__((unused)))
 	data->drawend = data->lineheight / 2 + W_HEIGHT / 2;
 	if (data->drawend >= W_HEIGHT)
 		data->drawend = W_HEIGHT - 1;
-
+	verticaldraw(data, x);
 	/* appeler vertical draw pour parcourir toute la hauteur */
 }
