@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 19:00:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 08:43:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	main(int argc, char **argv)
 		initplayer(data);
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, data);
-		/*
 		mlx_hook(data->win_ptr, 17, 1L << 0, &close_window, data);
+		/*
 		mlx_hook(data->win_ptr, ButtonPress, ButtonPressMask,
 			&handle_nothing, data); // handle_mouse
 		*/

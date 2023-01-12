@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 19:00:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 08:40:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,20 @@ void	mvforward(t_data *data, t_player *player)
 
 	i = (double)player->pos.x + player->dir.x * player->mvspeed;
 	j = player->pos.y;
-	if (data->map->pxl[i][j] == '0'
-		|| data->map->pxl[i][j] == 'N'
-		|| data->map->pxl[i][j] == 'S'
-		|| data->map->pxl[i][j] == 'E'
-		|| data->map->pxl[i][j] == 'W')
+	if (data->map->pxl[j][i] == '0'
+		|| data->map->pxl[j][i] == 'N'
+		|| data->map->pxl[j][i] == 'S'
+		|| data->map->pxl[j][i] == 'E'
+		|| data->map->pxl[j][i] == 'W')
 		player->pos.x += player->dir.x * player->mvspeed;
 	i = player->pos.x;
 	j = player->pos.y + player->dir.y * player->mvspeed;
-	if (data->map->pxl[i][j] == '0'
-		|| data->map->pxl[i][j] == 'N'
-		|| data->map->pxl[i][j] == 'S'
-		|| data->map->pxl[i][j] == 'E'
-		|| data->map->pxl[i][j] == 'W')
+	if (data->map->pxl[j][i] == '0'
+		|| data->map->pxl[j][i] == 'N'
+		|| data->map->pxl[j][i] == 'S'
+		|| data->map->pxl[j][i] == 'E'
+		|| data->map->pxl[j][i] == 'W')
 		player->pos.y += player->dir.y * player->mvspeed;
-	printf("===== %s:%s:%d =====\n", __FILE__, __func__, __LINE__);
-	printf("player->pos.x = %f\n", player->pos.x);
-	printf("player->pos.y = %f\n", player->pos.y);
-	printf("data->player.pos.x = %f\n", data->player.pos.x);
-	printf("data->player.pos.y = %f\n", data->player.pos.y);
-	printf("(i, j) = (%d, %d)\n", i, j);
-	printf("\n");
 }
 
 void	mvbackward(t_data *data, t_player *player)
@@ -50,23 +43,23 @@ void	mvbackward(t_data *data, t_player *player)
 
 	i = player->pos.x - player->dir.x * player->mvspeed;
 	j = player->pos.y;
-	if (data->map->pxl[i][j] == '0'
-		|| data->map->pxl[i][j] == 'N'
-		|| data->map->pxl[i][j] == 'S'
-		|| data->map->pxl[i][j] == 'E'
-		|| data->map->pxl[i][j] == 'W')
+	if (data->map->pxl[j][i] == '0'
+		|| data->map->pxl[j][i] == 'N'
+		|| data->map->pxl[j][i] == 'S'
+		|| data->map->pxl[j][i] == 'E'
+		|| data->map->pxl[j][i] == 'W')
 		player->pos.x -= player->dir.x * player->mvspeed;
 	i = player->pos.x;
 	j = player->pos.y - player->dir.y * player->mvspeed;
-	if (data->map->pxl[i][j] == '0'
-		|| data->map->pxl[i][j] == 'N'
-		|| data->map->pxl[i][j] == 'S'
-		|| data->map->pxl[i][j] == 'E'
-		|| data->map->pxl[i][j] == 'W')
+	if (data->map->pxl[j][i] == '0'
+		|| data->map->pxl[j][i] == 'N'
+		|| data->map->pxl[j][i] == 'S'
+		|| data->map->pxl[j][i] == 'E'
+		|| data->map->pxl[j][i] == 'W')
 		player->pos.y -= player->dir.y * player->mvspeed;
 }
 
-void	rot2left(t_data *data __attribute((unused)), t_player *player, t_dvect *plane)
+void	rot2right(t_data *data __attribute((unused)), t_player *player, t_dvect *plane)
 {
 	double	old_dirx;
 	double	old_planex;
@@ -80,7 +73,7 @@ void	rot2left(t_data *data __attribute((unused)), t_player *player, t_dvect *pla
 	plane->y = old_planex * sin(player->rotspeed) + plane->y * cos(player->rotspeed);
 }
 
-void	rot2right(t_data *data __attribute((unused)), t_player *player, t_dvect *plane)
+void	rot2left(t_data *data __attribute((unused)), t_player *player, t_dvect *plane)
 {
 	double	old_dirx;
 	double	old_planex;

@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:02:52 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 19:15:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 08:40:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 #include "ft_cube3d.h"
 
 /*
-	J'ai inversé avant/arrière et gauche/droite pour prendre en compte
-	le sens des (x, y) de l'écran, ça faisait moins de taffe xD
-	NOTE : en fait c'est pas une bonne idée, ça ne réagit pas très bien ^^
-		donc j'ai je remape les bonnes directions sur les bonnes touches
-*/
-int	handle_keypress(int keysym, t_data *data)
-{
+	to debug positions
 	printf("===== %s:%s:%d =====\n", __FILE__, __func__, __LINE__);
 	printf("player->pos.x = %f\n", data->player.pos.x);
 	printf("player->pos.y = %f\n", data->player.pos.y);
 	printf("\n");
+*/
+
+int	handle_keypress(int keysym, t_data *data)
+{
 	if (keysym == XK_Escape)
 		close_window(data);
 	else if (keysym == 'w')

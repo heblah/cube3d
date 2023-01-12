@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 18:55:33 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 08:44:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,11 @@ int	clear_window(t_data *data)
 
 int	render(t_data *data)
 {
-	static int	i = 0;
 	if (data->win_ptr == NULL)
 		return (MLX_ERROR);
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->mlx_img, 0, 0);
-	if (i == 0)
-	{
-		printf("===== %s:%s:%d =====\n", __FILE__, __func__, __LINE__);
-		printf("player->pos.x = %f\n", data->player.pos.x);
-		printf("player->pos.y = %f\n", data->player.pos.y);
-		printf("\n");
-		i++;
-	}
 	return (0);
 }
 

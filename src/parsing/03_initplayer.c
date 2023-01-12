@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 18:39:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 08:46:49 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	initplayer(t_data *data)
 
 	i = 0;
 	data->hit = 0;
-	data->player.mvspeed = 0.5;
-	data->player.rotspeed = 0.5;
+	data->player.mvspeed = 0.666;
+	data->player.rotspeed = 0.1;
 	while (i < data->map->row)
 	{
 		j = 0;
