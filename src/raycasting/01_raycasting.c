@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:28:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:40:32 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,22 @@ static void	puttextures(t_data *data, int x, int y)
 	if (data->side == 1 && data->ray.x > 0) //north
 	{
 		color = loadtexturecolor(data->north, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(&data->north, x, y, color);
+		img_pixel_put(data->img, x, y, color);
 	}
 	else if (data->side == 1 && data->ray.x < 0) //south
 	{
 		color = loadtexturecolor(data->south, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(&data->south, x, y, color);
+		img_pixel_put(data->img, x, y, color);
 	}
 	else if (data->side == 0 && data->ray.x < 0) //east
 	{
 		color = loadtexturecolor(data->east, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(&data->east, x, y, color);
+		img_pixel_put(data->img, x, y, color);
 	}
 	else if (data->side == 0 && data->ray.x > 0) //west
 	{
 		color = loadtexturecolor(data->west, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(&data->west, x, y, color);
+		img_pixel_put(data->img, x, y, color);
 	}
 }
 
