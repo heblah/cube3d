@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/10 17:09:57 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/12 10:27:37 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,19 @@ int	close_window(t_data *data)
 	}
 	memg(PURGE, 0, NULL, 0);
 	return (exit(0), 0);
+}
+
+int	handle_keypress(int keysym, t_data *data)
+{
+	if (keysym == XK_Escape)
+		close_window(data);
+	else if (keysym == 'w')
+		mvforward(data, &data->player);
+	else if (keysym == 'a')
+		rot2left(data, &data->player, &data->plane);
+	else if (keysym == 's')
+		mvbackward(data, &data->player);
+	else if (keysym == 'd')
+		rot2right(data, &data->player, &data->plane);
+	return (0);
 }

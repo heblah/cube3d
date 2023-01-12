@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/12 09:43:20 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/12 10:34:57 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ NAME    	= cube3D
 
 MAIN_DIR	= ./src/main/
 MAIN		= 00_main.c
-MAIN		+= 
 SRC			+= $(addprefix ${MAIN_DIR}, ${MAIN})
 
 PARS_DIR	= ./src/parsing/
@@ -27,14 +26,9 @@ PARS		+=
 SRC			+= $(addprefix ${PARS_DIR}, ${PARS})
 
 LIBX_DIR	= ./src/handle_minilibx/
-LIBX		= 00_handle_window.c 01_handle_events.c 02_handle_img.c
+LIBX		= 00_mlx.c 01_img.c
 LIBX		+= 
 SRC			+= $(addprefix ${LIBX_DIR}, ${LIBX})
-
-MTRX_DIR	= ./src/matrix/
-MTRX		= 00_matrix_utils.c
-MTRX		+= 
-SRC			+= $(addprefix ${MTRX_DIR}, ${MTRX})
 
 RAY_DIR 	= ./src/raycasting/
 RAY			= 00_raycasting.c 01_raycasting.c ray.c
@@ -42,7 +36,7 @@ RAY			+=
 SRC			+= $(addprefix ${RAY_DIR}, ${RAY})
 
 UTILS_DIR	= ./src/utils/
-UTILS		= 00_garbage_memory.c 01_list.c
+UTILS		= 00_garbage_memory.c 01_list.c 02_matrix_utils.c
 UTILS		+= 
 SRC			+= $(addprefix ${UTILS_DIR}, ${UTILS})
 
@@ -55,11 +49,11 @@ CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 
 #Conditionnal flags depending on the building version
-cflags.rls		:= -Wall -Wextra -Werror -MMD -MP -Isrc -Ilibft -Imlx_linux
-cflags.gdb		:= -g3
-cflags.san		:= -g3 -fsanitize=address
-CFLAGS			= ${cflags.rls} ${cflags.${build}}
-export			CFLAGS
+cflags.rls	:= -Wall -Wextra -Werror -MMD -MP -Isrc -Ilibft -Imlx_linux
+cflags.gdb	:= -g3
+cflags.san	:= -g3 -fsanitize=address
+CFLAGS		= ${cflags.rls} ${cflags.${build}}
+export		CFLAGS
 
 #Rules to other makefiles
 CC			= cc

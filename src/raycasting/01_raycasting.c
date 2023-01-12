@@ -6,13 +6,14 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 15:47:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:39:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <t_cube3d.h>
 #include <ft_cube3d.h>
 
+/* used for coloring walls */
 static void	draw_walls(t_data *data, int x)
 {
 	int		i;
@@ -36,6 +37,12 @@ static void	draw_walls(t_data *data, int x)
 		i++;
 	}
 }
+
+/*
+static void	texturing_walls(t_data *data)
+{
+}
+*/
 
 void	getwalls(t_data *data, int x)
 {

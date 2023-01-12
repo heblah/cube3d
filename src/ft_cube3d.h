@@ -7,16 +7,17 @@
 # include <fcntl.h>
 # include <limits.h>
 
-/* ./handle_minilibx/00_handle_window.c ===================================== */
+/* ./handle_minilibx/00_mlx.c =============================================== */
 int			open_window(t_data *data);
 int			close_window(t_data *data);
+int			handle_keypress(int keysym, t_data *data);
 
 /* ./handle_minilibx/01_handle_events.c ===================================== */
 int			handle_keypress(int keysym, t_data *data);
 int			handle_mouse(int keysym, int x, int y, t_data *data);
 int			handle_nothing(void);
 
-/* ./handle_minilibx/02_handle_img.c ======================================== */
+/* ./handle_minilibx/01_img.c =============================================== */
 int			clear_window(t_data *data);
 int			render(t_data *data);
 int			img_pixel_put(t_img *img, int x, int y, t_color color);
@@ -25,13 +26,6 @@ t_img		*new_img(t_data *data);
 /* ./main/00_main.c ========================================================= */
 t_data		*getdata(void);
 t_data		*initdata(void);
-
-/* ./matrix/00_matrix_utils.c =============================================== */
-t_matrix	*m_sum(t_matrix *a, t_matrix *b, int flag);
-t_matrix	*m_prod(t_matrix *a, t_matrix *b, int flag);
-t_matrix	*new_matrix(int row, int col);
-t_matrix	*free_matrix(t_matrix *m);
-void		free_tab(int **tab);
 
 /* ./parsing/00_parser.c ==================================================== */
 char		*get_texture(char *path);
@@ -52,8 +46,8 @@ void		initplayer(t_data *data);
 /* ./parsing/04_moves.c ===================================================== */
 void		mvforward(t_data *data, t_player *player);
 void		mvbackward(t_data *data, t_player *player);
-void		rot2left(t_data *data, t_player *player, t_dvect *plane);
-void		rot2right(t_data *data, t_player *player, t_dvect *plane);
+void		rot2right(t_data *data __attribute((unused)), t_player *player, t_dvect *plane);
+void		rot2left(t_data *data __attribute((unused)), t_player *player, t_dvect *plane);
 
 /* ./raycasting/00_raycasting.c ============================================= */
 int			raycasting(t_data *data);
@@ -77,4 +71,11 @@ void		*memg(t_memt type, size_t size, void *adr, t_label label);
 /* ./utils/01_list.c ======================================================== */
 t_list		*list_addback(t_list **first, char *newdata);
 size_t		listlen(t_list *first);
+
+/* ./utils/03_matrix_utils.c ================================================ */
+t_matrix	*m_sum(t_matrix *a, t_matrix *b, int flag);
+t_matrix	*m_prod(t_matrix *a, t_matrix *b, int flag);
+t_matrix	*new_matrix(int row, int col);
+t_matrix	*free_matrix(t_matrix *m);
+void		free_tab(int **tab);
 #endif

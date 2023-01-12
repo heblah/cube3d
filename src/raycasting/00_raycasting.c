@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 10:00:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:21:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,6 @@ static void	dda(t_data *data)
 			data->hit = 1;
 	}
 }
-/*
-		draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0x000000);
-	}
-	else
-		draw_filled_square(data->img, data->map_pos.x * 32, data->map_pos.y * 32, 32, 0xFFFF00);
-	printf("(debug-hit) char = %c (pos x: %d pos y: %d)\n",
-			data->map->pxl[data->map_pos.y][data->map_pos.x],
-			data->map_pos.x, data->map_pos.y);
-*/
 
 int	raycasting(t_data *data)
 {
