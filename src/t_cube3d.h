@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 15:36:10 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:45:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
+	char	*path;
 	int		bpp;
 	int		line_len;
 	int		endian;

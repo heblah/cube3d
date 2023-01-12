@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 15:34:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:50:21 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ t_data	*initdata(void)
 	data->garbage = NULL;
 	data->map_tmp = NULL;
 	data->map = NULL;
-	data->north.mlx_img = NULL;
-	data->south.mlx_img = NULL;
-	data->east.mlx_img = NULL;
-	data->west.mlx_img = NULL;
+	data->north.path = NULL;
+	data->south.path = NULL;
+	data->east.path = NULL;
+	data->west.path = NULL;
 	return (data);
 }
 

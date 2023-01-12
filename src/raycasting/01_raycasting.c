@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 16:17:35 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:28:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	getdatatexture(t_data *data)
 	else
 		data->texture.wallx = data->player.pos.x + data->walldist + data->ray.x;
 	data->texture.wallx -= floor(data->texture.wallx);
+
 	data->texture.tex.x = data->texture.wallx * data->texture.width;
 	if ((data->side == 0 && data->ray.x > 0)
 		|| (data->side == 1 && data->ray.x < 0))
@@ -77,45 +78,46 @@ static t_color	loadtexturecolor(t_img img, int x, int y)
 	return (color);
 }
 
-static void	loadtextures(t_data *data, int x, int y)
+/* overflow dans image certainement a cause du y */
+static void	puttextures(t_data *data, int x, int y)
 {
 	t_color	color;
 	
 	color.rgb = 0;
+	//printf("(x, y) = (%d, %d)\n", x, y);//
 	if (data->side == 1 && data->ray.x > 0) //north
-		img_pixel_put(&data->north, x, y, loadtexturecolor(data->north, x, y));
+	{
+		color = loadtexturecolor(data->north, data->texture.tex.x, data->texture.tex.y);
+		img_pixel_put(&data->north, x, y, color);
+	}
 	else if (data->side == 1 && data->ray.x < 0) //south
-		img_pixel_put(&data->south, x, y, loadtexturecolor(data->south, x, y));
+	{
+		color = loadtexturecolor(data->south, data->texture.tex.x, data->texture.tex.y);
+		img_pixel_put(&data->south, x, y, color);
+	}
 	else if (data->side == 0 && data->ray.x < 0) //east
-		img_pixel_put(&data->east, x, y, loadtexturecolor(data->east, x, y));
+	{
+		color = loadtexturecolor(data->east, data->texture.tex.x, data->texture.tex.y);
+		img_pixel_put(&data->east, x, y, color);
+	}
 	else if (data->side == 0 && data->ray.x > 0) //west
-		img_pixel_put(&data->west, x, y, loadtexturecolor(data->west, x, y));
+	{
+		color = loadtexturecolor(data->west, data->texture.tex.x, data->texture.tex.y);
+		img_pixel_put(&data->west, x, y, color);
+	}
 }
-/*
-	if (map->wall_side == 1 && map->ray_dir_y < 0)
-		draw(map, x, SOUTH);
-	else if (map->wall_side == 1 && map->ray_dir_y > 0)
-		draw(map, x, NORTH);
-	else if (map->wall_side == 0 && map->ray_dir_x < 0)
-		draw(map, x, WEST);
-	else if (map->wall_side == 0 && map->ray_dir_x > 0)
-		draw(map, x, EAST);
-*/
 
-void	getwalls(t_data *data, int x)
+void	getscene(t_data *data, int x)
 {
-	int	i;
-
-	i = 0;
+	getceil_floor(data, x);
 	getwallsdim(data);
 	getdatatexture(data); // comment to use textured walls
-	while (i < W_HEIGHT)
+	while (data->drawstart < data->drawend)
 	{
-		if (i < W_HEIGHT / 2)
-			img_pixel_put(data->img, x, i, data->ceil);
-		else
-			img_pixel_put(data->img, x, i, data->floor);
-		loadtextures(data, x, i);
-		i++;
+		data->texture.tex.y
+			= (int)data->texture.pos & (data->texture.height - 1);
+		data->texture.pos += data->texture.step;
+		puttextures(data, x, data->drawstart);
+		data->drawstart++;
 	}
 }

@@ -13,7 +13,7 @@ int			close_window(t_data *data);
 int			handle_keypress(int keysym, t_data *data);
 
 /* ./handle_minilibx/01_img.c =============================================== */
-int			clear_window(t_data *data);
+void		getceil_floor(t_data *data, int x);
 int			render(t_data *data);
 int			img_pixel_put(t_img *img, int x, int y, t_color color);
 t_img		*new_img(t_data *data);
@@ -23,7 +23,7 @@ t_data		*getdata(void);
 t_data		*initdata(void);
 
 /* ./parsing/00_parser.c ==================================================== */
-void		get_texture(t_data *data, char *path, t_img *img);
+void		*get_texture(char *path, t_img *img);
 t_color		getcolor(char *color_txt);
 int			parser(t_data *data, char *path2map);
 
@@ -50,7 +50,7 @@ void		rot2left(t_data *data __attribute((unused)), t_player *player, t_dvect *pl
 int			raycasting(t_data *data);
 
 /* ./raycasting/01_raycasting.c ============================================= */
-void		getwalls(t_data *data, int x);
+void		getscene(t_data *data, int x);
 
 /* ./raycasting/ray.c ======================================================= */
 void		img_pix_put(t_img *img, int x, int y, int color);
