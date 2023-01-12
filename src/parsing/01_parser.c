@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:23:10 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 12:51:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:59:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ char	*rm_nl(char *gnl)
 void	getmapdata(t_data *data, char *gnl)
 {
 	if (ft_strncmp(gnl, "NO ", 3) == 0)
-		data->no_txt = get_texture(gnl + 3);
+		get_texture(data, gnl + 3, &data->north);
 	else if (ft_strncmp(gnl, "SO ", 3) == 0)
-		data->so_txt = get_texture(gnl + 3);
+		get_texture(data, gnl + 3, &data->south);
 	else if (ft_strncmp(gnl, "WE ", 3) == 0)
-		data->we_txt = get_texture(gnl + 3);
+		get_texture(data, gnl + 3, &data->west);
 	else if (ft_strncmp(gnl, "EA ", 3) == 0)
-		data->ea_txt = get_texture(gnl + 3);
+		get_texture(data, gnl + 3, &data->east);
 	else if (ft_strncmp(gnl, "F ", 2) == 0)
 		data->floor = getcolor(gnl + 2);
 	else if (ft_strncmp(gnl, "C ", 2) == 0)

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 12:10:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:36:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
 
 /* t_matrix : matrix of space coordinates =================================== */
@@ -154,10 +156,10 @@ typedef struct s_data
 	char		*path2map;
 	t_list		*map_tmp;
 	t_matrix	*map;
-	char		*no_txt;
-	char		*so_txt;
-	char		*we_txt;
-	char		*ea_txt;
+	t_img		north;
+	t_img		south;
+	t_img		east;
+	t_img		west;
 	t_color		floor;
 	t_color		ceil;
 	t_color		color;

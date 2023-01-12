@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:48:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 13:27:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:47:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,10 @@ t_bool	checkparsing(t_data *data)
 {
 	if (data->floor.rgb == UINT_MAX
 		|| data->ceil.rgb == UINT_MAX
-		|| data->no_txt == NULL
-		|| data->so_txt == NULL
-		|| data->we_txt == NULL
-		|| data->ea_txt == NULL
+		|| data->north.mlx_img == NULL
+		|| data->south.mlx_img == NULL
+		|| data->west.mlx_img == NULL
+		|| data->east.mlx_img == NULL
 		|| wall_around(data->map) == false
 		|| player(data->map) != 1)
 		return (false);

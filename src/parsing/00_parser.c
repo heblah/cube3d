@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 14:37:34 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:28:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	openfile(char *path2file, char *ext)
 	return (fd);
 }
 
-char	*get_texture(char *path)
+void	get_texture(t_data *data, char *path, t_img *img)
 {
 	char	*texture;
 	int		fd;
@@ -65,12 +65,15 @@ char	*get_texture(char *path)
 			ft_putstr_fd(path, 2);
 			ft_putstr_fd(".\n", 2);
 		}
-		texture = ft_strdup(path);
-		return (memg(MALLOC, 0, texture, DATA), texture);
+		printf("path = %s\n", path);
+		printf("img = %p\n", img);
+		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, path,
+			&img->width, &img->height);
+		img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp,
+			&img->line_len, &img->endian);
 	}
 	else if (check_extension(".xpm", path) == false)
 		ft_putstr_fd("Error : texture has to be in xpm format.\n", 2);
-	return (NULL);
 }
 
 t_color	getcolor(char *color_txt)

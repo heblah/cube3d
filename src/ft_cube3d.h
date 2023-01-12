@@ -23,7 +23,7 @@ t_data		*getdata(void);
 t_data		*initdata(void);
 
 /* ./parsing/00_parser.c ==================================================== */
-char		*get_texture(char *path);
+void		get_texture(t_data *data, char *path, t_img *img);
 t_color		getcolor(char *color_txt);
 int			parser(t_data *data, char *path2map);
 
