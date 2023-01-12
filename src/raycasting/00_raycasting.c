@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 09:14:44 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:00:13 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 static void	initrays(t_data *data, int x)
 {
 	data->cam.x = 2 * x / (double)W_WIDTH - 1;
-	data->ray.x = data->player.dir.x + data->plane.x * data->cam.x;
-	data->ray.y = data->player.dir.y + data->plane.y * data->cam.x;
+	data->ray.x = (data->player.dir.x + data->plane.x * data->cam.x) * 1;
+	data->ray.y = (data->player.dir.y + data->plane.y * data->cam.x) * 1;
 	data->map_pos.x = (int)data->player.pos.x;
 	data->map_pos.y = (int)data->player.pos.y;
-	/*
+}
+/*
 	printf("===== %s:%s:%d =====\n", __FILE__, __func__, __LINE__);
 	printf("player->pos.x = %f\n", data->player.pos.x);
 	printf("player->pos.y = %f\n", data->player.pos.y);
 	printf("\n");
-	*/
-}
+*/
 
 static void	getdeltadist(t_data *data)
 {

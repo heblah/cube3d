@@ -6,13 +6,17 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 09:15:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:04:55 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_cube3d.h"
 #include "ft_cube3d.h"
 
+/*
+	inverting axes to take into account the screen orientation
+	player(x,y) = (j, i)
+*/
 static void	get_playerdata(t_player *player, int i, int j, int dir)
 {
 	player->pos.x = j;
@@ -70,7 +74,7 @@ void	initplayer(t_data *data)
 
 	i = 0;
 	data->hit = 0;
-	data->player.mvspeed = 0.666;
+	data->player.mvspeed = 0.5;
 	data->player.rotspeed = 0.1;
 	while (i < data->map->row)
 	{
