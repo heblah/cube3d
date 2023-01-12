@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 08:46:49 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 09:15:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static void	get_playerdata(t_player *player, int i, int j, int dir)
 {
-	player->pos.x = i;
-	player->pos.y = j;
+	player->pos.x = j;
+	player->pos.y = i;
 	if (dir == 'N')
 	{
 		player->dir.x = 0;

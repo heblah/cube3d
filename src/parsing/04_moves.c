@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 08:40:03 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 09:05:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ void	mvforward(t_data *data, t_player *player)
 	int	i;
 	int	j;
 
-	i = (double)player->pos.x + player->dir.x * player->mvspeed;
-	j = player->pos.y;
-	if (data->map->pxl[j][i] == '0'
-		|| data->map->pxl[j][i] == 'N'
-		|| data->map->pxl[j][i] == 'S'
-		|| data->map->pxl[j][i] == 'E'
-		|| data->map->pxl[j][i] == 'W')
+	j = player->pos.x + player->dir.x * player->mvspeed;
+	i = player->pos.y;
+	if (data->map->pxl[i][j] == '0'
+		|| data->map->pxl[i][j] == 'N'
+		|| data->map->pxl[i][j] == 'S'
+		|| data->map->pxl[i][j] == 'E'
+		|| data->map->pxl[i][j] == 'W')
 		player->pos.x += player->dir.x * player->mvspeed;
-	i = player->pos.x;
-	j = player->pos.y + player->dir.y * player->mvspeed;
-	if (data->map->pxl[j][i] == '0'
-		|| data->map->pxl[j][i] == 'N'
-		|| data->map->pxl[j][i] == 'S'
-		|| data->map->pxl[j][i] == 'E'
-		|| data->map->pxl[j][i] == 'W')
+	j = player->pos.x;
+	i = player->pos.y + player->dir.y * player->mvspeed;
+	if (data->map->pxl[i][j] == '0'
+		|| data->map->pxl[i][j] == 'N'
+		|| data->map->pxl[i][j] == 'S'
+		|| data->map->pxl[i][j] == 'E'
+		|| data->map->pxl[i][j] == 'W')
 		player->pos.y += player->dir.y * player->mvspeed;
 }
 
@@ -41,21 +41,21 @@ void	mvbackward(t_data *data, t_player *player)
 	int	i;
 	int	j;
 
-	i = player->pos.x - player->dir.x * player->mvspeed;
-	j = player->pos.y;
-	if (data->map->pxl[j][i] == '0'
-		|| data->map->pxl[j][i] == 'N'
-		|| data->map->pxl[j][i] == 'S'
-		|| data->map->pxl[j][i] == 'E'
-		|| data->map->pxl[j][i] == 'W')
+	j = player->pos.x - player->dir.x * player->mvspeed;
+	i = player->pos.y;
+	if (data->map->pxl[i][j] == '0'
+		|| data->map->pxl[i][j] == 'N'
+		|| data->map->pxl[i][j] == 'S'
+		|| data->map->pxl[i][j] == 'E'
+		|| data->map->pxl[i][j] == 'W')
 		player->pos.x -= player->dir.x * player->mvspeed;
-	i = player->pos.x;
-	j = player->pos.y - player->dir.y * player->mvspeed;
-	if (data->map->pxl[j][i] == '0'
-		|| data->map->pxl[j][i] == 'N'
-		|| data->map->pxl[j][i] == 'S'
-		|| data->map->pxl[j][i] == 'E'
-		|| data->map->pxl[j][i] == 'W')
+	j = player->pos.x;
+	i = player->pos.y - player->dir.y * player->mvspeed;
+	if (data->map->pxl[i][j] == '0'
+		|| data->map->pxl[i][j] == 'N'
+		|| data->map->pxl[i][j] == 'S'
+		|| data->map->pxl[i][j] == 'E'
+		|| data->map->pxl[i][j] == 'W')
 		player->pos.y -= player->dir.y * player->mvspeed;
 }
 
