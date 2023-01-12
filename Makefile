@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/01/12 10:34:57 by halvarez         ###   ########.fr        #
+#    Updated: 2023/01/12 18:53:37 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ LIBX		+=
 SRC			+= $(addprefix ${LIBX_DIR}, ${LIBX})
 
 RAY_DIR 	= ./src/raycasting/
-RAY			= 00_raycasting.c 01_raycasting.c ray.c
+RAY			= 00_raycasting.c 01_raycasting.c
 RAY			+=
 SRC			+= $(addprefix ${RAY_DIR}, ${RAY})
 
