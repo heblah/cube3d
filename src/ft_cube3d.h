@@ -41,22 +41,12 @@ void		initplayer(t_data *data);
 /* ./parsing/04_moves.c ===================================================== */
 void		move(t_data *data, t_player *player, int dir);
 void		rotation(t_player *player, t_dvect *plane, int dir);
-void		mvforward(t_data *data, t_player *player);
-void		mvbackward(t_data *data, t_player *player);
-void		rot2right(t_data *data __attribute((unused)), t_player *player, t_dvect *plane);
-void		rot2left(t_data *data __attribute((unused)), t_player *player, t_dvect *plane);
 
 /* ./raycasting/00_raycasting.c ============================================= */
 int			raycasting(t_data *data);
 
 /* ./raycasting/01_raycasting.c ============================================= */
 void		getscene(t_data *data, int x);
-
-/* ./raycasting/ray.c ======================================================= */
-void		img_pix_put(t_img *img, int x, int y, int color);
-void		draw_filled_square(t_img *img, int x, int y, int size, int color);
-void		render_background(t_img *img, int color);
-void		print_map(t_data *data);
 
 /* ./utils/00_garbage_memory.c ============================================== */
 void		*free_label(t_garbage *garbage, t_label label);

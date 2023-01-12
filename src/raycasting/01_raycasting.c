@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:40:32 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:50:04 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,12 @@ static void	getdatatexture(t_data *data)
 	else
 		data->texture.wallx = data->player.pos.x + data->walldist + data->ray.x;
 	data->texture.wallx -= floor(data->texture.wallx);
-
 	data->texture.tex.x = data->texture.wallx * data->texture.width;
 	if ((data->side == 0 && data->ray.x > 0)
 		|| (data->side == 1 && data->ray.x < 0))
 		data->texture.tex.x = data->texture.width - data->texture.tex.x -1;
-	data->texture.step = 1.0 * data->texture.height / data->lineheight; 
-	data->texture.pos = (data->drawstart- W_HEIGHT / 2 + data->lineheight / 2)
+	data->texture.step = 1.0 * data->texture.height / data->lineheight;
+	data->texture.pos = (data->drawstart - W_HEIGHT / 2 + data->lineheight / 2)
 		* data->texture.step;
 }
 
@@ -82,9 +81,8 @@ static t_color	loadtexturecolor(t_img img, int x, int y)
 static void	puttextures(t_data *data, int x, int y)
 {
 	t_color	color;
-	
+
 	color.rgb = 0;
-	//printf("(x, y) = (%d, %d)\n", x, y);//
 	if (data->side == 1 && data->ray.x > 0) //north
 	{
 		color = loadtexturecolor(data->north, data->texture.tex.x, data->texture.tex.y);

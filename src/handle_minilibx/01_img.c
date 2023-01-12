@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:18:23 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:50:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,39 +52,22 @@ int	img_pixel_put(t_img *img, int x, int y, t_color color)
 
 static void	loadtextures(t_data *data)
 {
-	data->north.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->north.path,
-		&data->north.width, &data->north.height);
+	data->north.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
+			data->north.path, &data->north.width, &data->north.height);
 	data->north.addr = mlx_get_data_addr(data->north.mlx_img, &data->north.bpp,
-		&data->north.line_len, &data->north.endian);
-	printf("data->north.path = %s\n", data->north.path);//
-
+			&data->north.line_len, &data->north.endian);
 	data->south.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->south.path,
-		&data->south.width, &data->south.height);
+			&data->south.width, &data->south.height);
 	data->south.addr = mlx_get_data_addr(data->south.mlx_img, &data->south.bpp,
-		&data->south.line_len, &data->south.endian);
-	printf("data->south.path = %s\n", data->south.path);//
-
+			&data->south.line_len, &data->south.endian);
 	data->west.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->west.path,
-		&data->west.width, &data->west.height);
+			&data->west.width, &data->west.height);
 	data->west.addr = mlx_get_data_addr(data->west.mlx_img, &data->west.bpp,
-		&data->west.line_len, &data->west.endian);
-	printf("data->west.path = %s\n", data->west.path);//
-
+			&data->west.line_len, &data->west.endian);
 	data->east.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->east.path,
-		&data->east.width, &data->east.height);
+			&data->east.width, &data->east.height);
 	data->east.addr = mlx_get_data_addr(data->east.mlx_img, &data->east.bpp,
-		&data->east.line_len, &data->east.endian);
-	printf("data->east.path = %s\n", data->east.path);//
-	/*
-	printf("data->north.mlx_img = %p\n", data->north.mlx_img);
-	printf("data->north.addr = %p\n", data->north.addr);
-	printf("data->south.mlx_img = %p\n", data->south.mlx_img);
-	printf("data->south.addr = %p\n", data->south.addr);
-	printf("data->west.mlx_img = %p\n", data->west.mlx_img);
-	printf("data->west.addr = %p\n", data->west.addr);
-	printf("data->east.mlx_img = %p\n", data->east.mlx_img);
-	printf("data->east.addr = %p\n", data->east.addr);
-	*/
+			&data->east.line_len, &data->east.endian);
 }
 
 t_img	*new_img(t_data *data)
