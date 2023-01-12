@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/11 16:00:43 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:10:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,16 @@ typedef struct s_player
 	double	mvspeed;
 }			t_player;
 
+typedef struct s_texture
+{
+	double	wallx;
+	t_vect	tex;
+	int		width;
+	int		height;
+	int		step;
+	double	pos;
+	//t_dvect	pos;
+}			t_texture;
 /* t_data =================================================================== */
 typedef struct s_data
 {
@@ -166,6 +176,7 @@ typedef struct s_data
 	int			lineheight;
 	int			drawstart;
 	int			drawend;
+	t_texture	texture;
 }				t_data;
 
 /* e_freeflag : to chose what matrix freed ================================== */
