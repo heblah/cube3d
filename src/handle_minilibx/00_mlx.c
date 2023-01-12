@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_handle_window.c                                 :+:      :+:    :+:   */
+/*   00_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 10:27:37 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:51:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int	handle_keypress(int keysym, t_data *data)
 	if (keysym == XK_Escape)
 		close_window(data);
 	else if (keysym == 'w')
-		mvforward(data, &data->player);
+		move(data, &data->player, 1);
 	else if (keysym == 'a')
-		rot2left(data, &data->player, &data->plane);
+		rotation(data, &data->player, &data->plane, -1);
 	else if (keysym == 's')
-		mvbackward(data, &data->player);
+		move(data, &data->player, -1);
 	else if (keysym == 'd')
-		rot2right(data, &data->player, &data->plane);
+		rotation(data, &data->player, &data->plane, 1);
 	return (0);
 }

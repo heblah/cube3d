@@ -12,11 +12,6 @@ int			open_window(t_data *data);
 int			close_window(t_data *data);
 int			handle_keypress(int keysym, t_data *data);
 
-/* ./handle_minilibx/01_handle_events.c ===================================== */
-int			handle_keypress(int keysym, t_data *data);
-int			handle_mouse(int keysym, int x, int y, t_data *data);
-int			handle_nothing(void);
-
 /* ./handle_minilibx/01_img.c =============================================== */
 int			clear_window(t_data *data);
 int			render(t_data *data);
@@ -44,6 +39,8 @@ t_bool		checkparsing(t_data *data);
 void		initplayer(t_data *data);
 
 /* ./parsing/04_moves.c ===================================================== */
+void		move(t_data *data, t_player *player, int dir);
+void		rotation(t_data *data __attribute((unused)), t_player *player, t_dvect *plane, int dir);
 void		mvforward(t_data *data, t_player *player);
 void		mvbackward(t_data *data, t_player *player);
 void		rot2right(t_data *data __attribute((unused)), t_player *player, t_dvect *plane);
@@ -72,7 +69,7 @@ void		*memg(t_memt type, size_t size, void *adr, t_label label);
 t_list		*list_addback(t_list **first, char *newdata);
 size_t		listlen(t_list *first);
 
-/* ./utils/03_matrix_utils.c ================================================ */
+/* ./utils/02_matrix_utils.c ================================================ */
 t_matrix	*m_sum(t_matrix *a, t_matrix *b, int flag);
 t_matrix	*m_prod(t_matrix *a, t_matrix *b, int flag);
 t_matrix	*new_matrix(int row, int col);
