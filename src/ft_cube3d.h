@@ -40,7 +40,7 @@ void		initplayer(t_data *data);
 
 /* ./parsing/04_moves.c ===================================================== */
 void		move(t_data *data, t_player *player, int dir);
-void		rotation(t_data *data __attribute((unused)), t_player *player, t_dvect *plane, int dir);
+void		rotation(t_player *player, t_dvect *plane, int dir);
 void		mvforward(t_data *data, t_player *player);
 void		mvbackward(t_data *data, t_player *player);
 void		rot2right(t_data *data __attribute((unused)), t_player *player, t_dvect *plane);

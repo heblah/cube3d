@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 10:39:57 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:13:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	draw_walls(t_data *data, int x)
 /*
 static void	texturing_walls(t_data *data)
 {
+	if (data->side
 }
 */
 
