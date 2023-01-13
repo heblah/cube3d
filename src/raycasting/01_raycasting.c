@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:59:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:58:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,17 @@ static void	getwallsdim(t_data *data)
 
 static void	getdatatexture(t_data *data)
 {
-	data->texture.height = 64;
-	data->texture.width = 64;
+	data->texture.height = 128;
+	data->texture.width = 128;
 	if (data->side == 0)
-		data->texture.wallx = data->player.pos.x + data->walldist + data->ray.y;
+		data->texture.wallx = data->player.pos.y + data->walldist + data->ray.y;
 	else
 		data->texture.wallx = data->player.pos.x + data->walldist + data->ray.x;
 	data->texture.wallx -= floor(data->texture.wallx);
-	data->texture.tex.x = data->texture.wallx * data->texture.width;
-	if ((data->side == 0 && data->ray.x > 0)
-		|| (data->side == 1 && data->ray.x < 0))
+	data->texture.tex.x = data->texture.wallx * (double)data->texture.width;
+	if (data->side == 0 && data->ray.x > 0)
+		data->texture.tex.x = data->texture.width - data->texture.tex.x -1;
+	if (data->side == 1 && data->ray.y < 0)
 		data->texture.tex.x = data->texture.width - data->texture.tex.x -1;
 	data->texture.step = 1.0 * data->texture.height / data->lineheight;
 	data->texture.pos = (data->drawstart - W_HEIGHT / 2 + data->lineheight / 2)
@@ -73,11 +74,14 @@ static t_color	loadtexturecolor(t_img img, int x, int y)
 {
 	t_color	color;
 
-	color.rgb = *(int *)(img.addr + (y * img.line_len + x * (img.bpp / 8)));
+	color.rgb = 0;
+	//if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
+	//{
+		color.rgb = *(int *)(img.addr + (y * img.line_len + x * (img.bpp / 8)));
+	//}
 	return (color);
 }
 
-/* overflow dans image certainement a cause du y */
 static void	puttextures(t_data *data, int x, int y)
 {
 	t_color	color;
@@ -109,11 +113,11 @@ void	getscene(t_data *data, int x)
 {
 	getceil_floor(data, x);
 	getwallsdim(data);
-	getdatatexture(data); // comment to use textured walls
+	getdatatexture(data);
 	while (data->drawstart < data->drawend)
 	{
-		data->texture.tex.y
-			= (int)data->texture.pos & (data->texture.height - 1);
+		data->texture.tex.y = (int)data->texture.pos
+			& (data->texture.height - 1);
 		data->texture.pos += data->texture.step;
 		puttextures(data, x, data->drawstart);
 		data->drawstart++;

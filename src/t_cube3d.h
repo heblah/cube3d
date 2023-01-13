@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 16:45:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:51:36 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,8 @@ typedef struct s_texture
 	t_vect	tex;
 	int		width;
 	int		height;
-	int		step;
+	double	step;
 	double	pos;
-	//t_dvect	pos;
 }			t_texture;
 /* t_data =================================================================== */
 typedef struct s_data
