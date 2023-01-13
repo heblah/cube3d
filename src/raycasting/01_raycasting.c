@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 10:27:05 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:22:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ static void	puttextures(t_data *data, int x, int y)
 	t_img	texture;
 
 	color.rgb = 0;
-	if (data->side == 1 && data->ray.x > 0) //north
+	if (data->side == 1 && data->ray.x > 0)
 		texture = data->north;
-	else if (data->side == 1 && data->ray.x < 0) //south
+	else if (data->side == 1 && data->ray.x < 0)
 		texture = data->south;
-	else if (data->side == 0 && data->ray.x < 0) //east
+	else if (data->side == 0 && data->ray.x < 0)
 		texture = data->east;
-	else if (data->side == 0 && data->ray.x > 0) //west
+	else if (data->side == 0 && data->ray.x > 0)
 		texture = data->west;
 	else
 		return ;
