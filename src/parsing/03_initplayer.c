@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 18:22:58 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:33:52 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 */
 static void	get_playerdata(t_player *player, int x, int y, int dir)
 {
-	player->pos.x = x;
-	player->pos.y = y;
+	player->pos.x = x + 0.5;
+	player->pos.y = y + 0.5;
 	if (dir == 'N')
 	{
 		player->dir.x = 0;
@@ -75,25 +75,25 @@ void	initplayer(t_data *data)
 	int	x;
 	int	y;
 
-	x = 0;
+	y = 0;
 	data->hit = 0;
 	data->player.mvspeed = 0.5;
 	data->player.rotspeed = 0.1;
-	while (x < data->map->row)
+	while (y < data->map->row)
 	{
-		y = 0;
-		while (y < data->map->col)
+		x = 0;
+		while (x < data->map->col)
 		{
-			if (data->map->pxl[x][y] == 'N'
-				|| data->map->pxl[x][y] == 'S'
-				|| data->map->pxl[x][y] == 'E'
-				|| data->map->pxl[x][y] == 'W')
+			if (data->map->pxl[y][x] == 'N'
+				|| data->map->pxl[y][x] == 'S'
+				|| data->map->pxl[y][x] == 'E'
+				|| data->map->pxl[y][x] == 'W')
 			{
-				get_playerdata(&data->player, y, x, data->map->pxl[x][y]);
-				get_fov(data, data->map->pxl[x][y]);
+				get_playerdata(&data->player, x, y, data->map->pxl[y][x]);
+				get_fov(data, data->map->pxl[y][x]);
 			}
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 }
