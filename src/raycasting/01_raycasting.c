@@ -6,39 +6,12 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 09:58:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:27:05 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <t_cube3d.h>
 #include <ft_cube3d.h>
-
-/* used for coloring walls */
-/*
-static void	draw_walls(t_data *data, int x)
-{
-	int		i;
-	t_color	color;
-	t_color	s_color;
-
-	i = data->drawstart;
-	color.red = 243;
-	color.green = 176;
-	color.blue = 53;
-	s_color.red = 48;
-	s_color.green = 78;
-	s_color.blue = 100;
-	while (i < data->drawend)
-	{
-		if (data->side == 1)
-			data->color = color;
-		else
-			data->color = s_color;
-		img_pixel_put(data->img, x, i, data->color);
-		i++;
-	}
-}
-*/
 
 static void	getwallsdim(t_data *data)
 {
@@ -53,8 +26,8 @@ static void	getwallsdim(t_data *data)
 
 static void	getdatatexture(t_data *data)
 {
-	data->texture.height = 128;
-	data->texture.width = 128;
+	data->texture.height = 64;
+	data->texture.width = 64;
 	if (data->side == 0)
 		data->texture.wallx = data->player.pos.y + data->walldist + data->ray.y;
 	else
@@ -75,38 +48,31 @@ static t_color	loadtexturecolor(t_img img, int x, int y)
 	t_color	color;
 
 	color.rgb = 0;
-	//if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
-	//{
+	if (x >= 0 && x < img.width && y >= 0 && y < img.height)
+	{
 		color.rgb = *(int *)(img.addr + (y * img.line_len + x * (img.bpp / 8)));
-	//}
+	}
 	return (color);
 }
 
 static void	puttextures(t_data *data, int x, int y)
 {
 	t_color	color;
+	t_img	texture;
 
 	color.rgb = 0;
 	if (data->side == 1 && data->ray.x > 0) //north
-	{
-		color = loadtexturecolor(data->north, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(data->img, x, y, color);
-	}
+		texture = data->north;
 	else if (data->side == 1 && data->ray.x < 0) //south
-	{
-		color = loadtexturecolor(data->south, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(data->img, x, y, color);
-	}
+		texture = data->south;
 	else if (data->side == 0 && data->ray.x < 0) //east
-	{
-		color = loadtexturecolor(data->east, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(data->img, x, y, color);
-	}
+		texture = data->east;
 	else if (data->side == 0 && data->ray.x > 0) //west
-	{
-		color = loadtexturecolor(data->west, data->texture.tex.x, data->texture.tex.y);
-		img_pixel_put(data->img, x, y, color);
-	}
+		texture = data->west;
+	else
+		return ;
+	color = loadtexturecolor(texture, data->texture.tex.x, data->texture.tex.y);
+	img_pixel_put(data->img, x, y, color);
 }
 
 void	getscene(t_data *data, int x)
