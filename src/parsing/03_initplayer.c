@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 18:13:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:22:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	initplayer(t_data *data)
 				|| data->map->pxl[x][y] == 'E'
 				|| data->map->pxl[x][y] == 'W')
 			{
-				get_playerdata(&data->player, x, y, data->map->pxl[x][y]);
+				get_playerdata(&data->player, y, x, data->map->pxl[x][y]);
 				get_fov(data, data->map->pxl[x][y]);
 			}
 			y++;
