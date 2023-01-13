@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 09:51:36 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:31:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ typedef struct s_texture
 	double	step;
 	double	pos;
 }			t_texture;
+
 /* t_data =================================================================== */
 typedef struct s_data
 {
@@ -153,7 +154,7 @@ typedef struct s_data
 	t_img		*old_img;
 	t_img		*img;
 	/* parsing */
-	char		*path2map;
+	//char		*path2map;
 	t_list		*map_tmp;
 	t_matrix	*map;
 	t_img		north;
@@ -162,7 +163,7 @@ typedef struct s_data
 	t_img		west;
 	t_color		floor;
 	t_color		ceil;
-	t_color		color;
+	//t_color		color;
 	/* raycasting */
 	t_player	player;
 	t_dvect		plane;

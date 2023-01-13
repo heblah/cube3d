@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 11:22:28 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:24:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	getdatatexture(t_data *data)
 	else
 		data->texture.wallx = data->player.pos.x + data->walldist + data->ray.x;
 	data->texture.wallx -= floor(data->texture.wallx);
-	data->texture.tex.x = data->texture.wallx * (double)data->texture.width;
+	data->texture.tex.x = data->texture.wallx * data->texture.width;
 	if (data->side == 0 && data->ray.x > 0)
 		data->texture.tex.x = data->texture.width - data->texture.tex.x -1;
 	if (data->side == 1 && data->ray.y < 0)
@@ -67,10 +67,10 @@ static void	puttextures(t_data *data, int x, int y)
 		texture = data->south;
 	else if (data->side == 0 && data->ray.x < 0)
 		texture = data->east;
-	else if (data->side == 0 && data->ray.x > 0)
+	else// if (data->side == 0 && data->ray.x > 0)
 		texture = data->west;
-	else
-		return ;
+	//else
+	//	return ;
 	color = loadtexturecolor(texture, data->texture.tex.x, data->texture.tex.y);
 	img_pixel_put(data->img, x, y, color);
 }

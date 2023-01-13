@@ -6,27 +6,31 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:18:50 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:14:50 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <t_cube3d.h>
 #include <ft_cube3d.h>
 
+/*
+	ffx/y = form factor on x or y
+	ff < 0 increases map size
+	ff > 0 reduces map size
+*/
 static void	initrays(t_data *data, int x)
 {
-	data->cam.x = 2 * x / (double)W_WIDTH - 1;
-	data->ray.x = (data->player.dir.x + data->plane.x * data->cam.x) * 1;
-	data->ray.y = (data->player.dir.y + data->plane.y * data->cam.x) * 1;
+	double	ffx;
+	double	ffy;
+
+	ffx = 1;
+	ffy = 1;
 	data->map_pos.x = (int)data->player.pos.x;
 	data->map_pos.y = (int)data->player.pos.y;
+	data->cam.x = 2 * x / (double)W_WIDTH - 1;
+	data->ray.x = (data->player.dir.x + data->plane.x * data->cam.x) * ffx;
+	data->ray.y = (data->player.dir.y + data->plane.y * data->cam.x) * ffy;
 }
-/*
-	printf("===== %s:%s:%d =====\n", __FILE__, __func__, __LINE__);
-	printf("player->pos.x = %f\n", data->player.pos.x);
-	printf("player->pos.y = %f\n", data->player.pos.y);
-	printf("\n");
-*/
 
 static void	getdeltadist(t_data *data)
 {
