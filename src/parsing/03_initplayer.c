@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   03_initplayer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 18:33:52 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:49:27 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	initplayer(t_data *data)
 
 	y = 0;
 	data->hit = 0;
-	data->player.mvspeed = 0.5;
-	data->player.rotspeed = 0.1;
+	data->player.mvspeed = 0.09;
+	data->player.rotspeed = 0.09;
 	while (y < data->map->row)
 	{
 		x = 0;

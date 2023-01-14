@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   04_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:50:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:08:33 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	rotation(t_player *player, t_dvect *plane, int dir)
 		- player->dir.y * sin(dir * player->rotspeed);
 	player->dir.y = old_dirx * sin(dir * player->rotspeed)
 		+ player->dir.y * cos(dir * player->rotspeed);
-	plane->x = plane->x * cos(dir * player->rotspeed)
-		- plane->y * sin(dir * player->rotspeed);
+	plane->x = (plane->x * cos(dir * player->rotspeed)
+			- plane->y * sin(dir * player->rotspeed));
 	plane->y = old_planex * sin(dir * player->rotspeed)
 		+ plane->y * cos(dir * player->rotspeed);
 }
