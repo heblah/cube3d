@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/14 14:48:31 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/14 14:57:10 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_color	loadtexturecolor(t_img img, int x, int y)
 	return (color);
 }
 
-static void	puttextures(t_data *data, int x)
+static void	puttextures(t_data *data, int x, int y)
 {
 	t_color	color;
 	t_img	texture;
@@ -73,7 +73,7 @@ static void	puttextures(t_data *data, int x)
 		return ;
 
 	color = loadtexturecolor(texture, data->texture.tex.x, data->texture.tex.y);
-	img_pixel_put(data->img, x, data->drawstart, color);
+	img_pixel_put(data->img, x, y, color);
 }
 
 void	getscene(t_data *data, int x)
@@ -84,9 +84,9 @@ void	getscene(t_data *data, int x)
 	while (data->drawstart < data->drawend)
 	{
 		data->texture.tex.y = (int)data->texture.pos
-			& (data->texture.width - 1);
+			& (data->texture.height - 1);
 		data->texture.pos += data->texture.step;
-		puttextures(data, x);
+		puttextures(data, x, data->drawstart);
 		data->drawstart++;
 	}
 }

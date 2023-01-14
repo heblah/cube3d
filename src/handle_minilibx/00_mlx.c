@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/14 14:01:55 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/14 15:18:54 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ int	handle_keypress(int keysym, t_data *data)
 	else if (keysym == 'w')
 		move(data, &data->player, 1);
 	else if (keysym == 'a')
-		rotation(&data->player, &data->plane, 1);
+		rotation(&data->player, &data->plane, -1);
 	else if (keysym == 's')
 		move(data, &data->player, -1);
 	else if (keysym == 'd')
-		rotation(&data->player, &data->plane, -1);
+		rotation(&data->player, &data->plane, 1);
 	return (0);
 }

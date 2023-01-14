@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/14 14:49:27 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/14 15:30:39 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,20 @@ static void	get_fov(t_data *data, int dir)
 		data->plane.x = fov;
 		data->plane.y = 0;
 	}
-	else if (dir == 'S')
+	if (dir == 'S')
 	{
 		data->plane.x = -fov;
 		data->plane.y = 0;
 	}
-	else if (dir == 'E')
-	{
-		data->plane.x = 0;
-		data->plane.y = -fov;
-	}
-	else if (dir == 'W')
+	if (dir == 'E')
 	{
 		data->plane.x = 0;
 		data->plane.y = fov;
+	}
+	if (dir == 'W')
+	{
+		data->plane.x = 0;
+		data->plane.y = -fov;
 	}
 }
 
@@ -77,8 +77,8 @@ void	initplayer(t_data *data)
 
 	y = 0;
 	data->hit = 0;
-	data->player.mvspeed = 0.09;
-	data->player.rotspeed = 0.09;
+	data->player.mvspeed = 0.5;
+	data->player.rotspeed = 0.1;
 	while (y < data->map->row)
 	{
 		x = 0;
