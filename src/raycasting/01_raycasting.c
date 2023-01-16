@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/14 14:57:10 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/16 13:23:45 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,16 @@ static void	getdatatexture(t_data *data)
 static t_color	loadtexturecolor(t_img img, int x, int y)
 {
 	t_color	color;
-
 	color.rgb = 0;
+	/*
+	t_data *data = getdata();
+
+	fprintf(data->fd, "texture(x, y) = (%d, %d)\n", x, y);
 	if (x >= 0 && x < img.width && y >= 0 && y < img.height)
 	{
+	*/
 		color.rgb = *(int *)(img.addr + (y * img.line_len + x * (img.bpp / 8)));
-	}
+	//}
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 18:27:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:19:00 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "mlx.h"
 
 //# define DBG printf("here: %s:%d\n", __func__, __LINE__);
-# define W_WIDTH		1920
-# define W_HEIGHT		1080
+# define W_WIDTH		480
+# define W_HEIGHT		270
 
 # define MLX_ERROR 		-1
 
@@ -180,6 +180,7 @@ typedef struct s_data
 	int			drawstart;
 	int			drawend;
 	t_texture	texture;
+	FILE		*fd;
 }				t_data;
 
 /* e_freeflag : to chose what matrix freed ================================== */
