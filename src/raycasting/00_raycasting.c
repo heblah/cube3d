@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/14 15:26:21 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/16 19:31:42 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ static void	initrays(t_data *data, int x)
 
 	ffx = 1;
 	ffy = 1;
-	data->map_pos.x = (int)data->player.pos.x;
-	data->map_pos.y = (int)data->player.pos.y;
+	data->map_pos.x = data->player.pos.x;
+	data->map_pos.y = data->player.pos.y;
 	data->cam.x = 2 * x / (double)W_WIDTH - 1;
 	data->ray.x = (data->player.dir.x + data->plane.x * data->cam.x) * ffx;
 	data->ray.y = (data->player.dir.y + data->plane.y * data->cam.x) * ffy;
 }
 
+// valeur abberante causé par le INT_MAX ?
 static void	getdeltadist(t_data *data)
 {
+	//fprintf(data->fd, "ray x,y (%f, %f)\n", data->ray.x, data->ray.y);
 	if (data->ray.x == 0)
 		data->deltadist.x = INT_MAX;
 	else
@@ -42,8 +44,9 @@ static void	getdeltadist(t_data *data)
 		data->deltadist.y = INT_MAX;
 	else
 		data->deltadist.y = fabs(1 / data->ray.y);
-}
+	//fprintf(data->fd, "ray (%f,%f) delta x,y (%f, %f)\n", data->ray.x, data->ray.y, data->deltadist.x, data->deltadist.y);
 
+}
 static void	getstep(t_data *data)
 {
 	if (data->ray.x < 0)
@@ -72,11 +75,16 @@ static void	getstep(t_data *data)
 	}
 }
 
+//valeur abberante 1073741823.500000
 static void	dda(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	data->hit = 0;
 	while (data->hit == 0)
 	{
+		//fprintf(data->fd, "(%d) side x,y (%f, %f)\n", i, data->sidedist.x, data->sidedist.y);
 		if (data->sidedist.x < data->sidedist.y)
 		{
 			data->sidedist.x += data->deltadist.x;
@@ -91,6 +99,7 @@ static void	dda(t_data *data)
 		}
 		if (data->map->pxl[data->map_pos.y][data->map_pos.x] == '1')
 			data->hit = 1;
+		i++;
 	}
 }
 

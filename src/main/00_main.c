@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/16 13:13:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:33:08 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		if (open_window(data) == MLX_ERROR || new_img(data) == NULL)
 			return (MLX_ERROR);
 		initplayer(data);
-		data->fd = fopen("dbg_texture", "w+");
+		data->fd = fopen("dbg_texture.debug", "w+");
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, data);
 		mlx_hook(data->win_ptr, 17, 1L << 0, &close_window, data);

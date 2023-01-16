@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+*.debug
+
+cube3D
 
 # Object files
 *.o

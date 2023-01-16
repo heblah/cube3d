@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/16 14:57:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:19:45 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef union u_color
 }	t_color;
 
 /* t_point structure ======================================================== */
-typedef struct s_vectd
+typedef struct s_dvect
 {
 	double	x;
 	double	y;
