@@ -13,9 +13,10 @@ int			close_window(t_data *data);
 int			handle_keypress(int keysym, t_data *data);
 
 /* ./handle_minilibx/01_img.c =============================================== */
-void		getceil_floor(t_data *data, int x);
+void		background(t_data *data);
+void		debug_total(t_data *data);
 int			render(t_data *data);
-int			img_pixel_put(t_img *img, int x, int y, t_color color);
+void		img_pixel_put(t_img *img, int x, int y, t_color color);
 t_img		*new_img(t_data *data);
 
 /* ./main/00_main.c ========================================================= */
@@ -43,7 +44,7 @@ void		move(t_data *data, t_player *player, int dir);
 void		rotation(t_player *player, t_dvect *plane, int dir);
 
 /* ./raycasting/00_raycasting.c ============================================= */
-int			raycasting(t_data *data);
+void		raycasting(t_data *data);
 
 /* ./raycasting/01_raycasting.c ============================================= */
 void		getscene(t_data *data, int x);

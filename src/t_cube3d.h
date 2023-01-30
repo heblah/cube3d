@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/16 16:19:45 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:08:26 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,9 +176,8 @@ typedef struct s_data
 	double		walldist;
 	int			hit;
 	int			side;
-	int			lineheight;
-	int			drawstart;
-	int			drawend;
+	int			start;
+	int			end;
 	t_texture	texture;
 	FILE		*fd;
 }				t_data;
