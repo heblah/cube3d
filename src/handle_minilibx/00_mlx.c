@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/14 15:18:54 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/30 16:45:44 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	close_window(t_data *data)
 		data->img->mlx_img = NULL;
 	}
 	if (data->mlx_ptr && data->win_ptr)
-	{
+	{ 0
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 	}
@@ -53,13 +53,13 @@ int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		close_window(data);
-	else if (keysym == 'w')
+	else if (keysym == 'w' || keysym == 'z')
 		move(data, &data->player, 1);
 	else if (keysym == 'a')
-		rotation(&data->player, &data->plane, -1);
+		rotation(&data->player, &data->plane, 1);
 	else if (keysym == 's')
 		move(data, &data->player, -1);
 	else if (keysym == 'd')
-		rotation(&data->player, &data->plane, 1);
+		rotation(&data->player, &data->plane, -1);
 	return (0);
 }

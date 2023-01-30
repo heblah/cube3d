@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/30 16:26:59 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/30 16:40:10 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ static void	get_fov(t_data *data, int dir)
 	else if (dir == 'E')
 	{
 		data->plane.x = 0;
-		data->plane.y = fov;
+		data->plane.y = -fov;
 	}
 	else if (dir == 'W')
 	{
 		data->plane.x = 0;
-		data->plane.y = -fov;
+		data->plane.y = fov;
 	}
 }
 

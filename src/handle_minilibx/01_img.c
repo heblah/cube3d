@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/30 16:35:06 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/30 16:43:12 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ int	render(t_data *data)
 		data->img->mlx_img, 0, 0);
 	debug_total(data);
 	i++;
+	if (i == 5)
+	{
+		sleep(3);
+		//exit(1);
+	}
 	return (0);
 }
 
