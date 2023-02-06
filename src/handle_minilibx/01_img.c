@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/30 16:43:12 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:55:46 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,41 +34,14 @@ void	background(t_data *data)
 	}
 }
 
-void	debug_total(t_data *data)
-{
-	fprintf(data->fd, "=========== DEBUG ===============\n");
-	fprintf(data->fd, "perpwalldist=%f\n", data->walldist);
-	fprintf(data->fd, "player_pos(x,y)=%f,%f\n", data->player.pos.x, data->player.pos.y);
-	fprintf(data->fd, "plane(x,y)=%f,%f\n", data->plane.x, data->plane.y);
-	fprintf(data->fd, "step(x,y)=%i,%i\n", data->step.x, data->step.y);
-	fprintf(data->fd, "map_pos(x,y)=%i,%i\n", data->map_pos.x, data->map_pos.y);
-	fprintf(data->fd, "cam(x,y)=%f,%f\n", data->cam.x, data->cam.y);
-	fprintf(data->fd, "tex(x,y)=%d,%d\n", data->texture.tex.x, data->texture.tex.y);
-	fprintf(data->fd, "deltadist=%f,%f\n", data->deltadist.x, data->deltadist.y);
-	fprintf(data->fd, "sidedist=%f,%f\n", data->sidedist.x, data->sidedist.y);
-	fprintf(data->fd, "start/end=%i,%i\n", data->start, data->end);
-	fprintf(data->fd, "texture_step=%f\n", data->texture.step);
-	fprintf(data->fd, "texture_pos=%f\n", data->texture.pos);
-	fprintf(data->fd, "texture_wallx=%f\n", data->texture.wallx);
-}
-
 int	render(t_data *data)
 {
-	static int	i = 0;
-
 	if (data->win_ptr == NULL)
 		return (MLX_ERROR);
-	background(data); //doesnt work ???
+	background(data);
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->mlx_img, 0, 0);
-	debug_total(data);
-	i++;
-	if (i == 5)
-	{
-		sleep(3);
-		//exit(1);
-	}
 	return (0);
 }
 

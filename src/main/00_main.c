@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/30 15:52:48 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:03:43 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(int argc, char **argv)
 		if (open_window(data) == MLX_ERROR || new_img(data) == NULL)
 			return (MLX_ERROR);
 		initplayer(data);
-		data->fd = fopen("dbg_texture.debug", "w+");
 		mlx_loop_hook(data->mlx_ptr, &render, data);
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, data);
@@ -57,7 +56,7 @@ int	main(int argc, char **argv)
 	}
 	else if (argc != 2)
 		ft_putstr_fd("Error: select one map.\n", 1);
-	return (close_window(data), fclose(data->fd), 0);
+	return (close_window(data), 0);
 }
 /*
 	mlx_hook(data->win_ptr, ButtonPress, ButtonPressMask,

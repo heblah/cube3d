@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/30 16:40:10 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:06 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 */
 static void	get_playerdata(t_player *player, int x, int y, int dir)
 {
-	player->pos.x = x;
-	player->pos.y = y;
+	player->pos.x = x + 0.5;
+	player->pos.y = y + 0.5;
 	if (dir == 'N')
 	{
 		player->dir.x = 0;
@@ -76,8 +76,8 @@ void	initplayer(t_data *data)
 	int	y;
 
 	y = 0;
-	data->player.mvspeed = 0.09;
-	data->player.rotspeed = 0.09;
+	data->player.mvspeed = 0.3;
+	data->player.rotspeed = 0.08;
 	while (y < data->map->row)
 	{
 		x = 0;

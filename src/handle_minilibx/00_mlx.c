@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/30 16:45:44 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:14:04 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	close_window(t_data *data)
 		data->img->mlx_img = NULL;
 	}
 	if (data->mlx_ptr && data->win_ptr)
-	{ 0
+	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 	}
