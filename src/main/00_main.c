@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 14:03:43 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:57:09 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ t_data	*initdata(void)
 	data->south.path = NULL;
 	data->east.path = NULL;
 	data->west.path = NULL;
+	data->ffx = 1;
+	data->ffy = 1;
+	data->on_zoom = false;
 	return (data);
 }
 
@@ -51,6 +54,9 @@ int	main(int argc, char **argv)
 		mlx_loop_hook(data->mlx_ptr, &render, data);
 		mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 			&handle_keypress, data);
+		mlx_hook(data->win_ptr, 6, 1L << 6, &mouse_camera, data);
+		mlx_hook(data->win_ptr, 4, 1L << 2, &handle_press, NULL);
+		mlx_hook(data->win_ptr, 5, 1L << 3, &handle_unpress, NULL);
 		mlx_hook(data->win_ptr, 17, 1L << 0, &close_window, data);
 		mlx_loop(data->mlx_ptr);
 	}

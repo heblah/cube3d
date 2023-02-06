@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 13:14:04 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:56:28 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,36 @@ int	close_window(t_data *data)
 	}
 	memg(PURGE, 0, NULL, 0);
 	return (exit(0), 0);
+}
+
+int	mouse_camera(int x, int y, t_data *data)
+{
+	(void)y;
+	if (x < 570)
+		rotation(&data->player, &data->plane, 1);
+	else if (x > 1450)
+		rotation(&data->player, &data->plane, -1);
+	return (0);
+}
+
+int	handle_press(int mouse_id)
+{
+	t_data	*data;
+
+	data = getdata();
+	if (mouse_id == 1)
+		data->ffx += 2.1;
+	return (0);
+}
+
+int	handle_unpress(int mouse_id)
+{
+	t_data	*data;
+
+	data = getdata();
+	if (mouse_id == 1)
+		data->ffx -= 2.1;
+	return (0);
 }
 
 int	handle_keypress(int keysym, t_data *data)

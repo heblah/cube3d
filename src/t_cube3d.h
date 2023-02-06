@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 14:03:30 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:53:13 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,10 @@ typedef struct s_data
 	int			lineheight;
 	int			drawstart;
 	int			drawend;
+	double		ffx;
+	double		ffy;
+	double		fov;
+	t_bool		on_zoom;
 	t_texture	texture;
 }				t_data;
 

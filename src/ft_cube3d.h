@@ -10,11 +10,13 @@
 /* ./handle_minilibx/00_mlx.c =============================================== */
 int			open_window(t_data *data);
 int			close_window(t_data *data);
+int			mouse_camera(int x, int y, t_data *data);
+int			handle_press(int mouse_id);
+int			handle_unpress(int mouse_id);
 int			handle_keypress(int keysym, t_data *data);
 
 /* ./handle_minilibx/01_img.c =============================================== */
 void		background(t_data *data);
-void		debug_total(t_data *data);
 int			render(t_data *data);
 void		img_pixel_put(t_img *img, int x, int y, t_color color);
 t_img		*new_img(t_data *data);
