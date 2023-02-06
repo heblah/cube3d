@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 14:41:06 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/06 15:37:25 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void	get_playerdata(t_player *player, int x, int y, int dir)
 	if (dir == 'N')
 	{
 		player->dir.x = 0;
-		player->dir.y = -1;
+		player->dir.y = 1;
 	}
 	else if (dir == 'S')
 	{
 		player->dir.x = 0;
-		player->dir.y = 1;
+		player->dir.y = -1;
 	}
 	else if (dir == 'E')
 	{
