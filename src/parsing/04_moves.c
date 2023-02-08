@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/16 16:19:59 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/08 16:18:16 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	move(t_data *data, t_player *player, int dir)
 		|| data->map->pxl[i][j] == 'E'
 		|| data->map->pxl[i][j] == 'W')
 		player->pos.y += dir * player->dir.y * player->mvspeed;
+	update_minimap(data);
 }
 
 void	rotation(t_player *player, t_dvect *plane, int dir)

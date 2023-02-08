@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/08 15:45:01 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/08 15:53:54 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	render(t_data *data)
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->minimap.mlx_img, 15, 15);
 	return (0);
 }
 

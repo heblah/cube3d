@@ -23,7 +23,9 @@ t_img		*new_img(t_data *data);
 
 /* ./handle_minilibx/02_img.c =============================================== */
 void		minimap_pix_put(t_data *data, int x, int y, int color);
-void		draw(t_data *data, int color);
+void		draw_filled(t_data *data, int x, int y, int color);
+void		update_minimap(t_data *data);
+void		print_map(t_data *data);
 void		init_minimap(t_data *data);
 
 /* ./main/00_main.c ========================================================= */
