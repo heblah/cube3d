@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 17:48:33 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/08 14:46:03 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	initplayer(t_data *data)
 	int	y;
 
 	y = 0;
-	data->player.mvspeed = 0.2;
+	data->player.mvspeed = 0.17;
 	data->player.rotspeed = 0.01;
 	while (y < data->map->row)
 	{
