@@ -21,6 +21,11 @@ int			render(t_data *data);
 void		img_pixel_put(t_img *img, int x, int y, t_color color);
 t_img		*new_img(t_data *data);
 
+/* ./handle_minilibx/02_img.c =============================================== */
+void		minimap_pix_put(t_data *data, int x, int y, int color);
+void		draw(t_data *data, int color);
+void		init_minimap(t_data *data);
+
 /* ./main/00_main.c ========================================================= */
 t_data		*getdata(void);
 t_data		*initdata(void);

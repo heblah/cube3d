@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 17:53:13 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/08 15:04:23 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct s_data
 	void		*win_ptr;
 	t_img		*old_img;
 	t_img		*img;
+	t_img		minimap;
 	/* parsing */
 	//char		*path2map;
 	t_list		*map_tmp;

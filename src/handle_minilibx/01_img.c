@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 13:55:46 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/08 15:45:01 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ t_img	*new_img(t_data *data)
 	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
 			&data->img->line_len, &data->img->endian);
 	loadtextures(data);
+	init_minimap(data);
 	return (data->img);
 }
