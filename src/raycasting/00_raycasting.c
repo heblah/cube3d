@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/16 19:31:42 by awallet          ###   ########.fr       */
+/*   Updated: 2023/01/17 18:03:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	initrays(t_data *data, int x)
 
 	ffx = 1;
 	ffy = 1;
-	data->map_pos.x = data->player.pos.x;
-	data->map_pos.y = data->player.pos.y;
+	data->map_pos.x = (int)data->player.pos.x;
+	data->map_pos.y = (int)data->player.pos.y;
 	data->cam.x = 2 * x / (double)W_WIDTH - 1;
 	data->ray.x = (data->player.dir.x + data->plane.x * data->cam.x) * ffx;
 	data->ray.y = (data->player.dir.y + data->plane.y * data->cam.x) * ffy;
@@ -97,7 +97,7 @@ static void	dda(t_data *data)
 			data->map_pos.y += data->step.y;
 			data->side = 1;
 		}
-		if (data->map->pxl[data->map_pos.y][data->map_pos.x] == '1')
+		if (data->map->pxl[data->map_pos.x][data->map_pos.y] == '1')
 			data->hit = 1;
 		i++;
 	}
