@@ -3,28 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   01_img.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 09:15:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:53:54 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_cube3d.h"
 #include "ft_cube3d.h"
 
-void	getceil_floor(t_data *data, int x)
+void	background(t_data *data)
 {
-	int	i;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (i < W_HEIGHT)
+	x = 0;
+	while (x < W_WIDTH)
 	{
-		if (i < W_HEIGHT / 2)
-			img_pixel_put(data->img, x, i, data->ceil);
-		else
-			img_pixel_put(data->img, x, i, data->floor);
-		i++;
+		y = 0;
+		while (y < W_HEIGHT)
+		{
+			if (y < W_HEIGHT / 2)
+				img_pixel_put(data->img, x, y, data->ceil);
+			else
+				img_pixel_put(data->img, x, y, data->floor);
+			y++;
+		}
+		++x;
 	}
 }
 
@@ -32,22 +38,25 @@ int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (MLX_ERROR);
+	background(data);
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->minimap.mlx_img, 15, 15);
 	return (0);
 }
 
-int	img_pixel_put(t_img *img, int x, int y, t_color color)
+void	img_pixel_put(t_img *img, int x, int y, t_color color)
 {
 	char	*pixel;
 
-	if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
-	{
-		pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-		*(int *)pixel = (int)color.rgb;
-	}
-	return (0);
+	if (y < 0 || y > W_HEIGHT - 1 || x < 0
+		|| x > W_WIDTH - 1)
+		return ;
+	pixel = img->addr + (y * img->line_len
+			+ x * (img->bpp / 8));
+	*(int *)pixel = color.rgb;
 }
 
 static void	loadtextures(t_data *data)
@@ -79,5 +88,6 @@ t_img	*new_img(t_data *data)
 	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
 			&data->img->line_len, &data->img->endian);
 	loadtextures(data);
+	init_minimap(data);
 	return (data->img);
 }

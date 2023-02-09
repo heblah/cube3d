@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/14 15:18:54 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/08 14:42:24 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,57 @@ int	close_window(t_data *data)
 	return (exit(0), 0);
 }
 
+int	mouse_camera(int x, int y, t_data *data)
+{
+	(void)y;
+	if (x < W_WIDTH / 3.5)
+		rotation(&data->player, &data->plane, 1);
+	else if (x > W_WIDTH / 1.3)
+		rotation(&data->player, &data->plane, -1);
+	return (0);
+}
+
+int	handle_press(int mouse_id)
+{
+	t_data	*data;
+
+	data = getdata();
+	if (mouse_id == 1)
+	{
+		data->ffx += 1.5;
+		data->ffy -= 0.08;
+	}
+	return (0);
+}
+
+int	handle_unpress(int mouse_id)
+{
+	t_data	*data;
+
+	data = getdata();
+	if (mouse_id == 1)
+	{
+		data->ffx -= 1.5;
+		data->ffy += 0.08;
+	}
+	return (0);
+}
+
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		close_window(data);
-	else if (keysym == 'w')
+	else if (keysym == 'w' || keysym == 'z')
 		move(data, &data->player, 1);
 	else if (keysym == 'a')
-		rotation(&data->player, &data->plane, -1);
+		(void)0;
 	else if (keysym == 's')
 		move(data, &data->player, -1);
 	else if (keysym == 'd')
+		(void)0;
+	else if (keysym == 65363)
+		rotation(&data->player, &data->plane, -1);
+	else if (keysym == 65361)
 		rotation(&data->player, &data->plane, 1);
 	return (0);
 }

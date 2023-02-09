@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/16 18:31:44 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/08 14:46:03 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void	get_playerdata(t_player *player, int x, int y, int dir)
 	if (dir == 'N')
 	{
 		player->dir.x = 0;
-		player->dir.y = -1;
+		player->dir.y = 1;
 	}
 	else if (dir == 'S')
 	{
 		player->dir.x = 0;
-		player->dir.y = 1;
+		player->dir.y = -1;
 	}
 	else if (dir == 'E')
 	{
@@ -47,7 +47,7 @@ static void	get_fov(t_data *data, int dir)
 {
 	double	fov;
 
-	fov = 0.66;
+	fov = 0.70;
 	if (dir == 'N')
 	{
 		data->plane.x = fov;
@@ -61,12 +61,12 @@ static void	get_fov(t_data *data, int dir)
 	else if (dir == 'E')
 	{
 		data->plane.x = 0;
-		data->plane.y = fov;
+		data->plane.y = -fov;
 	}
 	else if (dir == 'W')
 	{
 		data->plane.x = 0;
-		data->plane.y = -fov;
+		data->plane.y = fov;
 	}
 }
 
@@ -76,8 +76,7 @@ void	initplayer(t_data *data)
 	int	y;
 
 	y = 0;
-	data->hit = 0;
-	data->player.mvspeed = 0.1;
+	data->player.mvspeed = 0.17;
 	data->player.rotspeed = 0.01;
 	while (y < data->map->row)
 	{
