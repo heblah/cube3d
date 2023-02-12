@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 18:35:56 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/12 19:19:23 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	getdatatexture(t_data *data)
 	data->texture.height = 64;
 	data->texture.width = 64;
 	if (data->side == 0)
-		data->texture.wallx = data->player.pos.y + data->walldist + data->ray.y;
+		data->texture.wallx = data->player.pos.y + data->walldist * data->ray.y;
 	else
-		data->texture.wallx = data->player.pos.x + data->walldist + data->ray.x;
+		data->texture.wallx = data->player.pos.x + data->walldist * data->ray.x;
 	data->texture.wallx -= floor(data->texture.wallx);
 	data->texture.tex.x = data->texture.wallx * data->texture.width;
 	if (data->side == 0 && data->ray.x > 0)
@@ -61,13 +61,13 @@ static void	puttextures(t_data *data, int x, int y)
 	t_img	texture;
 
 	color.rgb = 0;
-	if (data->side == 1 && data->ray.x > 0)
+	if (data->side == 1 && data->ray.y > 0)
 		texture = data->north;
-	else if (data->side == 1 && data->ray.x < 0)
+	else if (data->side == 1 && data->ray.y < 0)
 		texture = data->south;
-	else if (data->side == 0 && data->ray.x < 0)
-		texture = data->east;
 	else if (data->side == 0 && data->ray.x > 0)
+		texture = data->east;
+	else if (data->side == 0 && data->ray.x < 0)
 		texture = data->west;
 	else
 		return ;

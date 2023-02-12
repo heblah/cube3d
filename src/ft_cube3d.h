@@ -40,6 +40,7 @@ void		initplayer(t_data *data);
 
 /* ./parsing/04_moves.c ===================================================== */
 void		move(t_data *data, t_player *player, int dir);
+void		translation(t_data *data, t_player *player, int dir);
 void		rotation(t_player *player, t_dvect *plane, int dir);
 
 /* ./raycasting/00_raycasting.c ============================================= */

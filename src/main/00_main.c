@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:51:42 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/12 19:21:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_data	*initdata(void)
 	data->garbage = NULL;
 	data->map_tmp = NULL;
 	data->map = NULL;
+	data->floor.rgb = UINT_MAX;
+	data->ceil.rgb = UINT_MAX;
 	data->north.path = NULL;
 	data->south.path = NULL;
 	data->east.path = NULL;

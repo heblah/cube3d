@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 18:50:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/12 19:11:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,26 @@ void	move(t_data *data, t_player *player, int dir)
 
 	j = player->pos.x + dir * player->dir.x * player->mvspeed;
 	i = player->pos.y;
-	if (data->map->pxl[i][j] == '0'
-		|| data->map->pxl[i][j] == 'N'
-		|| data->map->pxl[i][j] == 'S'
-		|| data->map->pxl[i][j] == 'E'
-		|| data->map->pxl[i][j] == 'W')
+	if (data->map->pxl[i][j] != '1')
 		player->pos.x += dir * player->dir.x * player->mvspeed;
 	j = player->pos.x;
 	i = player->pos.y + dir * player->dir.y * player->mvspeed;
-	if (data->map->pxl[i][j] == '0'
-		|| data->map->pxl[i][j] == 'N'
-		|| data->map->pxl[i][j] == 'S'
-		|| data->map->pxl[i][j] == 'E'
-		|| data->map->pxl[i][j] == 'W')
+	if (data->map->pxl[i][j] != '1')
+		player->pos.y += dir * player->dir.y * player->mvspeed;
+}
+
+void	translation(t_data *data, t_player *player, int dir)
+{
+	int	i;
+	int	j;
+
+	j = player->pos.x + dir * player->dir.x * player->mvspeed;
+	i = player->pos.y;
+	if (data->map->pxl[j][i] != '1')
+		player->pos.x += dir * player->dir.x * player->mvspeed;
+	j = player->pos.x;
+	i = player->pos.y + dir * player->dir.y * player->mvspeed;
+	if (data->map->pxl[j][i] != '1')
 		player->pos.y += dir * player->dir.y * player->mvspeed;
 }
 
