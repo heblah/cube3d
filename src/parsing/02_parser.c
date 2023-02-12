@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:48:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 16:53:08 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:36:26 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_bool	checkparsing(t_data *data)
 		|| data->east.path == NULL
 		|| wall_around(data->map) == false
 		|| player(data->map) != 1)
-		return (false);
+		return (ft_putstr_fd("Error: wrong map format.\n", 2), false);
 	memg(FREE, 0, NULL, PARSE);
 	data->map_tmp = NULL;
 	return (true);

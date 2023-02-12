@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/08 16:18:16 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/12 18:11:03 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,30 @@ void	move(t_data *data, t_player *player, int dir)
 		|| data->map->pxl[i][j] == 'E'
 		|| data->map->pxl[i][j] == 'W')
 		player->pos.y += dir * player->dir.y * player->mvspeed;
+	update_minimap(data);
+}
+
+void	translation(t_data *data, t_player *player, int dir)
+{
+	int	i;
+	int	j;
+
+	j = player->pos.x;
+	i = player->pos.y + dir * player->dir.y * player->mvspeed;
+	if (data->map->pxl[i][j] == '0'
+		|| data->map->pxl[i][j] == 'N'
+		|| data->map->pxl[i][j] == 'S'
+		|| data->map->pxl[i][j] == 'E'
+		|| data->map->pxl[i][j] == 'W')
+		player->pos.x += dir * player->dir.y * player->mvspeed;
+	j = player->pos.y + dir * player->dir.y * player->mvspeed;
+	i = player->pos.x;
+	if (data->map->pxl[i][j] == '0'
+		|| data->map->pxl[i][j] == 'N'
+		|| data->map->pxl[i][j] == 'S'
+		|| data->map->pxl[i][j] == 'E'
+		|| data->map->pxl[i][j] == 'W')
+		player->pos.x += dir * player->dir.x * player->mvspeed;
 	update_minimap(data);
 }
 

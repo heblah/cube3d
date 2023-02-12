@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/08 14:46:03 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/12 17:49:47 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ static void	get_playerdata(t_player *player, int x, int y, int dir)
 {
 	player->pos.x = x + 0.5;
 	player->pos.y = y + 0.5;
-	if (dir == 'N')
+	if (dir == 'E')
 	{
 		player->dir.x = 0;
 		player->dir.y = 1;
 	}
-	else if (dir == 'S')
+	else if (dir == 'W')
 	{
 		player->dir.x = 0;
 		player->dir.y = -1;
 	}
-	else if (dir == 'E')
+	else if (dir == 'S')
 	{
 		player->dir.x = 1;
 		player->dir.y = 0;
 	}
-	else if (dir == 'W')
+	else if (dir == 'N')
 	{
 		player->dir.x = -1;
 		player->dir.y = 0;
@@ -48,22 +48,22 @@ static void	get_fov(t_data *data, int dir)
 	double	fov;
 
 	fov = 0.70;
-	if (dir == 'N')
+	if (dir == 'E')
 	{
 		data->plane.x = fov;
 		data->plane.y = 0;
 	}
-	else if (dir == 'S')
+	else if (dir == 'W')
 	{
 		data->plane.x = -fov;
 		data->plane.y = 0;
 	}
-	else if (dir == 'E')
+	else if (dir == 'S')
 	{
 		data->plane.x = 0;
 		data->plane.y = -fov;
 	}
-	else if (dir == 'W')
+	else if (dir == 'N')
 	{
 		data->plane.x = 0;
 		data->plane.y = fov;

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/08 15:21:26 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/12 17:20:53 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_data	*initdata(void)
 	data->south.path = NULL;
 	data->east.path = NULL;
 	data->west.path = NULL;
+	data->floor.rgb = UINT_MAX;
+	data->ceil.rgb = UINT_MAX;
 	data->ffx = 1;
 	data->ffy = 1;
 	data->on_zoom = false;
