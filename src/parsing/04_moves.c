@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:07:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/12 19:11:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 11:11:48 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	translation(t_data *data, t_player *player, int dir)
 	int	i;
 	int	j;
 
-	j = player->pos.x + dir * player->dir.x * player->mvspeed;
+	j = player->pos.x + dir * data->plane.x * player->mvspeed;
 	i = player->pos.y;
-	if (data->map->pxl[j][i] != '1')
-		player->pos.x += dir * player->dir.x * player->mvspeed;
+	if (data->map->pxl[i][j] != '1')
+		player->pos.x += dir * data->plane.x * player->mvspeed;
 	j = player->pos.x;
-	i = player->pos.y + dir * player->dir.y * player->mvspeed;
-	if (data->map->pxl[j][i] != '1')
-		player->pos.y += dir * player->dir.y * player->mvspeed;
+	i = player->pos.y + dir * data->plane.y * player->mvspeed;
+	if (data->map->pxl[i][j] != '1')
+		player->pos.y += dir * data->plane.y * player->mvspeed;
 }
 
 void	rotation(t_player *player, t_dvect *plane, int dir)
