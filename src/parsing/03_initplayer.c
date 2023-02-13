@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   03_initplayer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:13:51 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/12 18:48:31 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:53:04 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	initplayer(t_data *data)
 	y = 0;
 	data->hit = 0;
 	data->player.mvspeed = 0.5;
-	data->player.rotspeed = 0.1;
+	data->player.rotspeed = 0.05;
 	while (y < data->map->row)
 	{
 		x = 0;
@@ -89,8 +89,9 @@ void	initplayer(t_data *data)
 				|| data->map->pxl[y][x] == 'E'
 				|| data->map->pxl[y][x] == 'W')
 			{
-				get_playerdata(&data->player, x, y, data->map->pxl[y][x]);
-				get_fov(data, data->map->pxl[y][x]);
+				data->pdi = data->map->pxl[y][x];
+				get_playerdata(&data->player, x, y, data->pdi);
+				get_fov(data, data->pdi);
 			}
 			x++;
 		}

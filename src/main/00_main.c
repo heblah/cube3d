@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 11:48:41 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:26:17 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ t_data	*initdata(void)
 	data->map = NULL;
 	data->floor.rgb = UINT_MAX;
 	data->ceil.rgb = UINT_MAX;
+	data->pdi = 0;
+	data->ffx = 1;
+	data->ffy = 1;
 	data->north.path = NULL;
 	data->south.path = NULL;
 	data->east.path = NULL;
@@ -60,7 +63,7 @@ int	main(int argc, char **argv)
 		mlx_loop(data->mlx_ptr);
 	}
 	else if (argc != 2)
-		ft_putstr_fd("Error: select one map.\n", 1);
+		ft_putstr_fd("Error: select one map.\n", 2);
 	return (close_window(data), 0);
 }
 /*

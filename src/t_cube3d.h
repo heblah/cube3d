@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 12:00:09 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:06:39 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,7 @@ typedef struct s_data
 	int			drawend;
 	double		ffx;
 	double		ffy;
-	double		fov;
-	t_bool		on_zoom;
+	char		pdi;
 	t_texture	texture;
 }				t_data;
 

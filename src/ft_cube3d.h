@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_cube3d.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 11:57:36 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 11:57:37 by halvarez         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_CUBE3D_H
 # define FT_CUBE3D_H
 
@@ -33,11 +21,11 @@ t_img		*new_img(t_data *data);
 /* ./handle_minilibx/02_img.c =============================================== */
 void		minimap_pix_put(t_data *data, int x, int y, int color);
 void		draw_filled(t_data *data, int x, int y, int color);
-void		update_minimap(t_data *data);
+void		update_minimap(t_data *data, int x, int y);
 void		print_map(t_data *data);
 void		init_minimap(t_data *data);
 
-/* ./handle_minilibx/02_mouse.c ============================================= */
+/* ./handle_minilibx/03_mouse.c ============================================= */
 int			mouse_camera(int x, int y, t_data *data);
 int			handle_press(int mouse_id);
 int			handle_unpress(int mouse_id);

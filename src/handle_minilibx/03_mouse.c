@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_mouse.c                                         :+:      :+:    :+:   */
+/*   03_mouse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:45:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 11:47:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:01:53 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	mouse_camera(int x, int y, t_data *data)
 {
 	(void)y;
 	if (x < W_WIDTH / 3.5)
-		rotation(&data->player, &data->plane, 1);
-	else if (x > W_WIDTH / 1.3)
 		rotation(&data->player, &data->plane, -1);
+	else if (x > W_WIDTH / 1.3)
+		rotation(&data->player, &data->plane, 1);
 	return (0);
 }
 

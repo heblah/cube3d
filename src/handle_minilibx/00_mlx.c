@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 11:12:24 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:48:09 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,17 @@ int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		close_window(data);
-	else if (keysym == 'w')
+	else if (keysym == 'w' || keysym == 'z')
 		move(data, &data->player, 1);
 	else if (keysym == 'a')
 		translation(data, &data->player, -1);
-		//rotation(&data->player, &data->plane, 1);
 	else if (keysym == 's')
 		move(data, &data->player, -1);
 	else if (keysym == 'd')
 		translation(data, &data->player, 1);
-		//rotation(&data->player, &data->plane, -1);
 	else if (keysym == 65363)
 		rotation(&data->player, &data->plane, 1);
 	else if (keysym == 65361)
-		rotation(&data->player, &data->plane, -1); 
+		rotation(&data->player, &data->plane, -1);
 	return (0);
 }

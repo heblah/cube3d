@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01_img.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 09:15:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:34:07 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	render(t_data *data)
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->minimap.mlx_img, 15, 15);
 	return (0);
 }
 
@@ -79,5 +81,6 @@ t_img	*new_img(t_data *data)
 	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
 			&data->img->line_len, &data->img->endian);
 	loadtextures(data);
+	init_minimap(data);
 	return (data->img);
 }
