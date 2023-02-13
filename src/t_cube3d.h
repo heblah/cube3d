@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/13 18:27:59 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:00:09 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct s_data
 	void		*win_ptr;
 	t_img		*old_img;
 	t_img		*img;
+	t_img		minimap;
 	/* parsing */
 	//char		*path2map;
 	t_list		*map_tmp;
@@ -179,6 +180,10 @@ typedef struct s_data
 	int			lineheight;
 	int			drawstart;
 	int			drawend;
+	double		ffx;
+	double		ffy;
+	double		fov;
+	t_bool		on_zoom;
 	t_texture	texture;
 }				t_data;
 
