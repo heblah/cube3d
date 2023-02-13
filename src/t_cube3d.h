@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 13:06:39 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:14:09 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include "ft_libft.h"
 # include "mlx.h"
 
-//# define DBG printf("here: %s:%d\n", __func__, __LINE__);
 # define W_WIDTH		1920
 # define W_HEIGHT		1080
 
@@ -148,14 +147,11 @@ typedef struct s_texture
 typedef struct s_data
 {
 	t_garbage	*garbage;
-	/* mlx pointers */
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		*old_img;
 	t_img		*img;
 	t_img		minimap;
-	/* parsing */
-	//char		*path2map;
 	t_list		*map_tmp;
 	t_matrix	*map;
 	t_img		north;
@@ -164,8 +160,6 @@ typedef struct s_data
 	t_img		west;
 	t_color		floor;
 	t_color		ceil;
-	//t_color		color;
-	/* raycasting */
 	t_player	player;
 	t_dvect		plane;
 	t_dvect		cam;
@@ -186,11 +180,4 @@ typedef struct s_data
 	t_texture	texture;
 }				t_data;
 
-/* e_freeflag : to chose what matrix freed ================================== */
-enum e_freeflag
-{
-	nofree = 1 << 0,
-	free_a = 1 << 1,
-	free_b = 1 << 2,
-};
 #endif
