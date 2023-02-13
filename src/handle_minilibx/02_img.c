@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:03:56 by awallet           #+#    #+#             */
-/*   Updated: 2023/02/08 16:24:59 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:03:36 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,14 @@ void	draw_filled(t_data *data, int x, int y, int color)
 	}
 }
 
-void	update_minimap(t_data *data)
+void	update_minimap(t_data *data, int x, int y)
 {
-	print_map(data);
+	draw_filled(data, (int)data->player.pos.x * 10,
+		(int)data->player.pos.y * 10, 0xFF0000);
+	if ((int)data->player.pos.x != x)
+		draw_filled(data, x * 10, y * 10, data->ceil.rgb);
+	if ((int)data->player.pos.y != y)
+		draw_filled(data, x * 10, y * 10, data->ceil.rgb);
 }
 
 void	print_map(t_data *data)
@@ -55,19 +60,13 @@ void	print_map(t_data *data)
 		x = -1;
 		while (++x < data->map->col)
 		{
-			if (data->map->pxl[y][x] == '1' || data->map->pxl[y][x] == ' ')
-				draw_filled(data, x * 10, y * 10, 0x00FF00);
+			if (data->map->pxl[y][x] == '1')
+				draw_filled(data, x * 10, y * 10, 0x000000);
 			else if (data->map->pxl[y][x] == 'N' || data->map->pxl[y][x] == 'S'
 				|| data->map->pxl[y][x] == 'W' || data->map->pxl[y][x] == 'E')
-			{
-				if (data->player.pos.x != 0 && data->player.pos.y != 0)
-					draw_filled(data, data->player.pos.x * 10 - 0.5,
-						data->player.pos.y * 10 - 0.5, 0xFF0000);
-				else
-					draw_filled(data, x * 10, y * 10, 0xFF0000);
-			}
+				draw_filled(data, x * 10, y * 10, 0xFF0000);
 			else
-				draw_filled(data, x * 10, y * 10, 0x000000);
+				draw_filled(data, x * 10, y * 10, data->ceil.rgb);
 		}
 	}
 }
@@ -77,10 +76,10 @@ void	init_minimap(t_data *data)
 	data->minimap.mlx_img = mlx_new_image(data->mlx_ptr,
 			data->map->col * 10, data->map->row * 10);
 	if (!data->minimap.mlx_img)
-		return ;
+		ft_putstr_fd("Error: Minimap failed\n", 2);
 	data->minimap.addr = mlx_get_data_addr(data->minimap.mlx_img,
 			&data->minimap.bpp, &data->minimap.line_len, &data->minimap.endian);
 	if (!data->minimap.addr)
-		return ;
+		ft_putstr_fd("Error: Minimap Addr failed\n", 2);
 	print_map(data);
 }

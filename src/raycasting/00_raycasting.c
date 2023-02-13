@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:09:34 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/09 08:58:22 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:02:37 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@
 */
 static void	initrays(t_data *data, int x)
 {
-	double	ffx;
-	double	ffy;
-
-	ffx = 1;
-	ffy = 1;
 	data->map_pos.x = (int)data->player.pos.x;
 	data->map_pos.y = (int)data->player.pos.y;
 	data->cam.x = 2 * x / (double)W_WIDTH - 1;
@@ -76,9 +71,6 @@ static void	getstep(t_data *data)
 
 static void	dda(t_data *data)
 {
-	int	i;
-
-	i = 0;
 	data->hit = 0;
 	while (data->hit == 0)
 	{
@@ -94,13 +86,12 @@ static void	dda(t_data *data)
 			data->map_pos.y += data->step.y;
 			data->side = 1;
 		}
-		if (data->map->pxl[data->map_pos.x][data->map_pos.y] == '1')
+		if (data->map->pxl[data->map_pos.y][data->map_pos.x] == '1')
 			data->hit = 1;
-		i++;
 	}
 }
 
-void	raycasting(t_data *data)
+int	raycasting(t_data *data)
 {
 	int	x;
 
@@ -112,10 +103,11 @@ void	raycasting(t_data *data)
 		getstep(data);
 		dda(data);
 		if (data->side == 0)
-			data->walldist = ((data->sidedist.x - data->deltadist.x));
+			data->walldist = data->sidedist.x - data->deltadist.x;
 		else
-			data->walldist = ((data->sidedist.y - data->deltadist.y));
+			data->walldist = data->sidedist.y - data->deltadist.y;
 		getscene(data, x);
 		x++;
 	}
+	return (0);
 }

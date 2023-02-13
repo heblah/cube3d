@@ -6,31 +6,25 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/08 15:53:54 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:34:07 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_cube3d.h"
 #include "ft_cube3d.h"
 
-void	background(t_data *data)
+void	getceil_floor(t_data *data, int x)
 {
-	int	x;
-	int	y;
+	int	i;
 
-	x = 0;
-	while (x < W_WIDTH)
+	i = 0;
+	while (i < W_HEIGHT)
 	{
-		y = 0;
-		while (y < W_HEIGHT)
-		{
-			if (y < W_HEIGHT / 2)
-				img_pixel_put(data->img, x, y, data->ceil);
-			else
-				img_pixel_put(data->img, x, y, data->floor);
-			y++;
-		}
-		++x;
+		if (i < W_HEIGHT / 2)
+			img_pixel_put(data->img, x, i, data->ceil);
+		else
+			img_pixel_put(data->img, x, i, data->floor);
+		i++;
 	}
 }
 
@@ -38,7 +32,6 @@ int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (MLX_ERROR);
-	background(data);
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->mlx_img, 0, 0);
@@ -47,16 +40,16 @@ int	render(t_data *data)
 	return (0);
 }
 
-void	img_pixel_put(t_img *img, int x, int y, t_color color)
+int	img_pixel_put(t_img *img, int x, int y, t_color color)
 {
 	char	*pixel;
 
-	if (y < 0 || y > W_HEIGHT - 1 || x < 0
-		|| x > W_WIDTH - 1)
-		return ;
-	pixel = img->addr + (y * img->line_len
-			+ x * (img->bpp / 8));
-	*(int *)pixel = color.rgb;
+	if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
+	{
+		pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+		*(int *)pixel = (int)color.rgb;
+	}
+	return (0);
 }
 
 static void	loadtextures(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/08 15:04:23 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:06:39 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "mlx.h"
 
 //# define DBG printf("here: %s:%d\n", __func__, __LINE__);
-# define W_WIDTH		1980
-# define W_HEIGHT		920
+# define W_WIDTH		1920
+# define W_HEIGHT		1080
 
 # define MLX_ERROR 		-1
 
@@ -112,7 +112,7 @@ typedef union u_color
 }	t_color;
 
 /* t_point structure ======================================================== */
-typedef struct s_dvect
+typedef struct s_vectd
 {
 	double	x;
 	double	y;
@@ -164,7 +164,7 @@ typedef struct s_data
 	t_img		west;
 	t_color		floor;
 	t_color		ceil;
-	t_color		color;
+	//t_color		color;
 	/* raycasting */
 	t_player	player;
 	t_dvect		plane;
@@ -182,8 +182,7 @@ typedef struct s_data
 	int			drawend;
 	double		ffx;
 	double		ffy;
-	double		fov;
-	t_bool		on_zoom;
+	char		pdi;
 	t_texture	texture;
 }				t_data;
 

@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/09 08:59:07 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/13 14:08:09 by awallet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ PARS		+=
 SRC			+= $(addprefix ${PARS_DIR}, ${PARS})
 
 LIBX_DIR	= ./src/handle_minilibx/
-LIBX		= 00_mlx.c 01_img.c 02_img.c
+LIBX		= 00_mlx.c 01_img.c 02_img.c 03_mouse.c
 LIBX		+= 
 SRC			+= $(addprefix ${LIBX_DIR}, ${LIBX})
 

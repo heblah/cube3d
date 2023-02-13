@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:37:47 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/06 14:51:14 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:19:57 by awallet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	getwallsdim(t_data *data)
 
 static void	getdatatexture(t_data *data)
 {
-	data->texture.height = 128;
-	data->texture.width = 128;
+	data->texture.height = 64;
+	data->texture.width = 64;
 	if (data->side == 0)
 		data->texture.wallx = data->player.pos.y + data->walldist * data->ray.y;
 	else
@@ -35,9 +35,9 @@ static void	getdatatexture(t_data *data)
 	data->texture.wallx -= floor(data->texture.wallx);
 	data->texture.tex.x = data->texture.wallx * data->texture.width;
 	if (data->side == 0 && data->ray.x > 0)
-		data->texture.tex.x = data->texture.width - data->texture.tex.x - 1;
+		data->texture.tex.x = data->texture.width - data->texture.tex.x -1;
 	if (data->side == 1 && data->ray.y < 0)
-		data->texture.tex.x = data->texture.width - data->texture.tex.x - 1;
+		data->texture.tex.x = data->texture.width - data->texture.tex.x -1;
 	data->texture.step = 1.0 * data->texture.height / data->lineheight;
 	data->texture.pos = (data->drawstart - W_HEIGHT / 2 + data->lineheight / 2)
 		* data->texture.step;
@@ -49,7 +49,9 @@ static t_color	loadtexturecolor(t_img img, int x, int y)
 
 	color.rgb = 0;
 	if (x >= 0 && x < img.width && y >= 0 && y < img.height)
+	{
 		color.rgb = *(int *)(img.addr + (y * img.line_len + x * (img.bpp / 8)));
+	}
 	return (color);
 }
 
@@ -59,14 +61,14 @@ static void	puttextures(t_data *data, int x, int y)
 	t_img	texture;
 
 	color.rgb = 0;
-	if (data->side == 1 && data->ray.y < 0)
+	if (data->side == 1 && data->ray.y > 0)
 		texture = data->south;
-	else if (data->side == 1 && data->ray.y > 0)
+	else if (data->side == 1 && data->ray.y < 0)
 		texture = data->north;
-	else if (data->side == 0 && data->ray.x < 0)
-		texture = data->west;
 	else if (data->side == 0 && data->ray.x > 0)
 		texture = data->east;
+	else if (data->side == 0 && data->ray.x < 0)
+		texture = data->west;
 	else
 		return ;
 	color = loadtexturecolor(texture, data->texture.tex.x, data->texture.tex.y);
@@ -75,12 +77,13 @@ static void	puttextures(t_data *data, int x, int y)
 
 void	getscene(t_data *data, int x)
 {
+	getceil_floor(data, x);
 	getwallsdim(data);
 	getdatatexture(data);
 	while (data->drawstart < data->drawend)
 	{
 		data->texture.tex.y = (int)data->texture.pos
-			& (data->texture.width - 1);
+			& (data->texture.height - 1);
 		data->texture.pos += data->texture.step;
 		puttextures(data, x, data->drawstart);
 		data->drawstart++;

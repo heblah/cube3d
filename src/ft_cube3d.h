@@ -10,23 +10,25 @@
 /* ./handle_minilibx/00_mlx.c =============================================== */
 int			open_window(t_data *data);
 int			close_window(t_data *data);
-int			mouse_camera(int x, int y, t_data *data);
-int			handle_press(int mouse_id);
-int			handle_unpress(int mouse_id);
 int			handle_keypress(int keysym, t_data *data);
 
 /* ./handle_minilibx/01_img.c =============================================== */
-void		background(t_data *data);
+void		getceil_floor(t_data *data, int x);
 int			render(t_data *data);
-void		img_pixel_put(t_img *img, int x, int y, t_color color);
+int			img_pixel_put(t_img *img, int x, int y, t_color color);
 t_img		*new_img(t_data *data);
 
 /* ./handle_minilibx/02_img.c =============================================== */
 void		minimap_pix_put(t_data *data, int x, int y, int color);
 void		draw_filled(t_data *data, int x, int y, int color);
-void		update_minimap(t_data *data);
+void		update_minimap(t_data *data, int x, int y);
 void		print_map(t_data *data);
 void		init_minimap(t_data *data);
+
+/* ./handle_minilibx/03_mouse.c ============================================= */
+int			mouse_camera(int x, int y, t_data *data);
+int			handle_press(int mouse_id);
+int			handle_unpress(int mouse_id);
 
 /* ./main/00_main.c ========================================================= */
 t_data		*getdata(void);
@@ -54,7 +56,7 @@ void		translation(t_data *data, t_player *player, int dir);
 void		rotation(t_player *player, t_dvect *plane, int dir);
 
 /* ./raycasting/00_raycasting.c ============================================= */
-void		raycasting(t_data *data);
+int			raycasting(t_data *data);
 
 /* ./raycasting/01_raycasting.c ============================================= */
 void		getscene(t_data *data, int x);
