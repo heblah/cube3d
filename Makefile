@@ -6,7 +6,7 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/14 10:03:04 by halvarez         ###   ########.fr        #
+#    Updated: 2023/02/14 10:41:45 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ CLIB		= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lm -lXext -lX11
 CLIB		+= -lz -Llibft -lft
 
 #Conditionnal flags depending on the building version
-cflags.rls	:= -Wall -Wextra -Werror -MMD -MP -Isrc -Ilibft -Imlx_linux
+cflags.rls	:= -Wall -Wextra -Werror -MMD -MP -Isrc -Ilibft -Imlx_linux -Wuninitialized
 cflags.gdb	:= -g3
 cflags.san	:= -g3 -fsanitize=address
 CFLAGS		= ${cflags.rls} ${cflags.${build}}

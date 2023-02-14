@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:40:00 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 14:14:09 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/14 10:59:10 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ typedef struct s_data
 	t_garbage	*garbage;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	t_img		*old_img;
 	t_img		*img;
 	t_img		minimap;
 	t_list		*map_tmp;

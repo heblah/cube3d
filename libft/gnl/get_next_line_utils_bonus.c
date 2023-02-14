@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:10:43 by hans              #+#    #+#             */
-/*   Updated: 2022/11/07 18:51:49 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/14 10:46:22 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ char	*gnl_calloc(size_t size)
 		return (NULL);
 	i = 0;
 	while (i < size)
-	{
-		*(s + i) = *(s + i) & (~*(s + i));
-		i++;
-	}
+		s[i++] = '\0';
 	return ((char *)s);
 }
 

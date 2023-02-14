@@ -48,7 +48,7 @@ ${NAME}:mdir ${OBJS}
 #rules
 all:   	${NAME}
 
-mdir:	
+mdir:
 		mkdir -p $(addprefix ${OBJ_DIR}, ${SUBDIR})
 
 clean:
@@ -57,7 +57,7 @@ clean:
 
 fclean:    clean
 		${RM} ${NAME}
-        
+
 re:     fclean all
 
 -include ${DEPS}

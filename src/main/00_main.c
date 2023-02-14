@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 16:07:06 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 09:54:54 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/14 10:59:28 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_data	*initdata(void)
 	data = getdata();
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
-	data->old_img = NULL;
 	data->img = NULL;
 	data->garbage = NULL;
 	data->map_tmp = NULL;
