@@ -6,12 +6,12 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/13 14:08:09 by awallet          ###   ########.fr        #
+#    Updated: 2023/02/14 10:03:04 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version = release
-build		:= san
+build		:= gdb
 
 #Compilation of the mandatory part
 NAME    	= cube3D

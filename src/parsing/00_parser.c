@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 17:09:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:56:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	openfile(char *path2file, char *ext)
 	else
 	{
 		if (close(fd) == -1)
-			return (ft_putstr_fd("Error closing the file", 2),
+			return (ft_putstr_fd("Error: closing the file", 2),
 				ft_putstr_fd(path2file, 2),
 				ft_putstr_fd(".\n", 2), -1);
 		else
@@ -59,7 +59,7 @@ void	*get_texture(char *path, t_img *img)
 	{
 		if (close(fd) == -1)
 		{
-			ft_putstr_fd("Error closing the file", 2);
+			ft_putstr_fd("Error: closing the file", 2);
 			ft_putstr_fd(path, 2);
 			ft_putstr_fd(".\n", 2);
 		}

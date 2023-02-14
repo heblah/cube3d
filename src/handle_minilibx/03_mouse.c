@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:45:58 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/13 13:01:53 by awallet          ###   ########.fr       */
+/*   Updated: 2023/02/14 09:42:29 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	handle_press(int mouse_id)
 	if (mouse_id == 1)
 	{
 		data->ffx += 1.5;
-		data->ffy -= 0.08;
 	}
 	return (0);
 }
@@ -44,7 +43,6 @@ int	handle_unpress(int mouse_id)
 	if (mouse_id == 1)
 	{
 		data->ffx -= 1.5;
-		data->ffy += 0.08;
 	}
 	return (0);
 }
