@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 18:56:19 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:39:14 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	open_window(t_data *data)
 	if (data->mlx_ptr == NULL)
 		return (MLX_ERROR);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, W_WIDTH, W_HEIGHT,
-			"Cube 3D");
+			"cub3D");
 	if (data->win_ptr == NULL)
 		return (free(data->mlx_ptr), MLX_ERROR);
 	return (0);
@@ -33,7 +33,6 @@ int	close_window(t_data *data)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
 		mlx_destroy_image(data->mlx_ptr, data->minimap.mlx_img);
-		data->img->mlx_img = NULL;
 	}
 	if (data->north.mlx_img)
 		mlx_destroy_image(data->mlx_ptr, data->north.mlx_img);
@@ -44,18 +43,13 @@ int	close_window(t_data *data)
 	if (data->west.mlx_img)
 		mlx_destroy_image(data->mlx_ptr, data->west.mlx_img);
 	if (data->mlx_ptr && data->win_ptr)
-	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
 	if (data->mlx_ptr)
 	{
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
-		data->mlx_ptr = NULL;
 	}
-	memg(PURGE, 0, NULL, 0);
-	return (exit(0), 0);
+	return (memg(PURGE, 0, NULL, 0), exit(0), 0);
 }
 
 int	handle_keypress(int keysym, t_data *data)

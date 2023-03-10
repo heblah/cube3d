@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/03/10 18:32:07 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:36:58 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,12 @@ t_color	getcolor(char *color_txt)
 	int		red;
 	int		green;
 	int		blue;
-	int		i;
 
 	color.rgb = UINT_MAX;
-	i = -1;
-	while (*(color_txt + ++i))
-		if ((color_txt[i] < '0' || color_txt[i] > '9') && color_txt[i] != ',')
-			return (ft_putstr_fd("Error : wrong format color.\n", 2), color);
+	while (*color_txt && *color_txt == ' ')
+		color_txt++;
+	if (checkrgb(color_txt) == false)
+		return (ft_putstr_fd("", 2), color);
 	red = ft_atoi(color_txt);
 	while (*color_txt && *color_txt != ',')
 		color_txt++;

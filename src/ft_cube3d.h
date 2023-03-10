@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:14:31 by awallet           #+#    #+#             */
-/*   Updated: 2023/02/13 14:14:32 by awallet          ###   ########.fr       */
+/*   Updated: 2023/03/10 19:17:42 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int			convertmap(t_data *data, t_list	*maptmp);
 
 /* ./parsing/02_parser.c ==================================================== */
 t_bool		checkparsing(t_data *data);
+int			checkrgb(char *colortxt);
 
 /* ./parsing/03_initplayer.c ================================================ */
 void		initplayer(t_data *data);

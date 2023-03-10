@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:48:20 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/12 19:24:40 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:33:38 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,31 @@ t_bool	checkparsing(t_data *data)
 		return (ft_putstr_fd("Error: wrong map format.\n", 2), false);
 	memg(FREE, 0, NULL, PARSE);
 	data->map_tmp = NULL;
+	return (true);
+}
+
+int	checkrgb(char *color)
+{
+	int	i;
+	int	comma;
+	int	error;
+	int	idx;
+
+	i = 0;
+	comma = 0;
+	error = 0;
+	idx = ft_strlen(color) - 1;
+	while (idx && color[idx] == ' ')
+		color[idx--] = '\0';
+	while (color[i])
+	{
+		if (color[i] == ',')
+			comma++;
+		if (color[i] != ',' && (color[i] < '0' || color[i] > '9'))
+			error++;
+		i++;
+	}
+	if (comma != 2 || error)
+		return (false);
 	return (true);
 }
