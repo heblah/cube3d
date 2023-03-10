@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:40:03 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 11:01:04 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:56:19 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,17 @@ int	close_window(t_data *data)
 		&& data->img->mlx_img)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-		mlx_destroy_image(data->mlx_ptr, data->north.mlx_img);
-		mlx_destroy_image(data->mlx_ptr, data->south.mlx_img);
-		mlx_destroy_image(data->mlx_ptr, data->east.mlx_img);
-		mlx_destroy_image(data->mlx_ptr, data->west.mlx_img);
 		mlx_destroy_image(data->mlx_ptr, data->minimap.mlx_img);
 		data->img->mlx_img = NULL;
 	}
+	if (data->north.mlx_img)
+		mlx_destroy_image(data->mlx_ptr, data->north.mlx_img);
+	if (data->south.mlx_img)
+		mlx_destroy_image(data->mlx_ptr, data->south.mlx_img);
+	if (data->east.mlx_img)
+		mlx_destroy_image(data->mlx_ptr, data->east.mlx_img);
+	if (data->west.mlx_img)
+		mlx_destroy_image(data->mlx_ptr, data->west.mlx_img);
 	if (data->mlx_ptr && data->win_ptr)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);

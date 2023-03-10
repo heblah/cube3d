@@ -6,7 +6,7 @@
 /*   By: halvarez <halvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:43:14 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 10:18:06 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:32:07 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static t_bool	check_extension(char *ext, char *file)
 
 	len_ext = ft_strlen(ext);
 	len_file = ft_strlen(file);
-	if (ft_strncmp(ext, file + len_file - len_ext, len_ext) != 0)
+	while (len_file && file[len_file - 1] == ' ')
+		file[--len_file] = '\0';
+	if (!len_ext || !len_file
+		|| ft_strncmp(ext, file + len_file - len_ext, len_ext) != 0)
 		return (false);
 	return (true);
 }
@@ -54,6 +57,8 @@ void	*get_texture(char *path, t_img *img)
 {
 	int		fd;
 
+	while (path && *path && *path == ' ')
+		path++;
 	fd = openfile(path, ".xpm");
 	if (check_extension(".xpm", path) == true && fd != -1)
 	{
@@ -105,7 +110,7 @@ int	parser(t_data *data, char *path2map)
 
 	fd = openfile(path2map, ".cub");
 	if (fd == -1)
-		return (ft_putstr_fd("Error : invalid map extension.\n", 2), -1);
+		return (ft_putstr_fd("Error : invalid map.\n", 2), -1);
 	gnl = rm_nl(get_next_line(fd));
 	while (gnl != NULL)
 	{

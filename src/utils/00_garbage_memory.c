@@ -6,13 +6,13 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:25:37 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/03 10:47:13 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:17:57 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_cube3d.h"
 #include "ft_cube3d.h"
-#define ERROR "Error alllocating memory, exiting minishell.\n"
+#define ERROR "Error alllocating memory, exiting cub3D.\n"
 
 void	*free_label(t_garbage *garbage, t_label label)
 {

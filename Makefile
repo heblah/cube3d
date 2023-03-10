@@ -6,15 +6,15 @@
 #    By: awallet <awallet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:55:50 by halvarez          #+#    #+#              #
-#    Updated: 2023/02/14 12:12:59 by halvarez         ###   ########.fr        #
+#    Updated: 2023/03/10 18:37:03 by halvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Default build version = release
-build		:= gdb
+build		:= san
 
 #Compilation of the mandatory part
-NAME    	= cube3D
+NAME    	= cub3D
 
 MAIN_DIR	= ./src/main/
 MAIN		= 00_main.c

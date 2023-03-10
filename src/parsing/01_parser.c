@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:23:10 by halvarez          #+#    #+#             */
-/*   Updated: 2023/01/12 17:09:48 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:21:54 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ char	*rm_nl(char *gnl)
 
 void	getmapdata(t_data *data, char *gnl)
 {
-	if (ft_strncmp(gnl, "NO ", 3) == 0)
+	if (ft_strncmp(gnl, "NO", 2) == 0)
 		get_texture(gnl + 3, &data->north);
-	else if (ft_strncmp(gnl, "SO ", 3) == 0)
+	else if (ft_strncmp(gnl, "SO", 2) == 0)
 		get_texture(gnl + 3, &data->south);
-	else if (ft_strncmp(gnl, "WE ", 3) == 0)
+	else if (ft_strncmp(gnl, "WE", 2) == 0)
 		get_texture(gnl + 3, &data->west);
-	else if (ft_strncmp(gnl, "EA ", 3) == 0)
+	else if (ft_strncmp(gnl, "EA", 2) == 0)
 		get_texture(gnl + 3, &data->east);
-	else if (ft_strncmp(gnl, "F ", 2) == 0)
+	else if (ft_strncmp(gnl, "F", 1) == 0)
 		data->floor = getcolor(gnl + 2);
-	else if (ft_strncmp(gnl, "C ", 2) == 0)
+	else if (ft_strncmp(gnl, "C", 1) == 0)
 		data->ceil = getcolor(gnl + 2);
 }
 

@@ -6,7 +6,7 @@
 /*   By: awallet <awallet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:25:16 by halvarez          #+#    #+#             */
-/*   Updated: 2023/02/14 10:50:39 by halvarez         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:54:24 by halvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,29 @@ int	img_pixel_put(t_img *img, int x, int y, t_color color)
 	return (0);
 }
 
-static void	loadtextures(t_data *data)
+static int	loadtextures(t_data *data)
 {
 	data->north.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->north.path, &data->north.width, &data->north.height);
-	data->north.addr = mlx_get_data_addr(data->north.mlx_img, &data->north.bpp,
-			&data->north.line_len, &data->north.endian);
 	data->south.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->south.path,
 			&data->south.width, &data->south.height);
-	data->south.addr = mlx_get_data_addr(data->south.mlx_img, &data->south.bpp,
-			&data->south.line_len, &data->south.endian);
 	data->west.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->west.path,
 			&data->west.width, &data->west.height);
-	data->west.addr = mlx_get_data_addr(data->west.mlx_img, &data->west.bpp,
-			&data->west.line_len, &data->west.endian);
 	data->east.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->east.path,
 			&data->east.width, &data->east.height);
+	if (!data->north.mlx_img || !data->south.mlx_img || !data->east.mlx_img
+		|| !data->west.mlx_img)
+		return (ft_putstr_fd("Error: Corrupted XPM file.\n", 2),
+			close_window(data));
+	data->north.addr = mlx_get_data_addr(data->north.mlx_img, &data->north.bpp,
+			&data->north.line_len, &data->north.endian);
+	data->south.addr = mlx_get_data_addr(data->south.mlx_img, &data->south.bpp,
+			&data->south.line_len, &data->south.endian);
+	data->west.addr = mlx_get_data_addr(data->west.mlx_img, &data->west.bpp,
+			&data->west.line_len, &data->west.endian);
 	data->east.addr = mlx_get_data_addr(data->east.mlx_img, &data->east.bpp,
 			&data->east.line_len, &data->east.endian);
+	return (1);
 }
 
 t_img	*new_img(t_data *data)
@@ -80,7 +85,7 @@ t_img	*new_img(t_data *data)
 	data->img->mlx_img = mlx_new_image(data->mlx_ptr, W_WIDTH, W_HEIGHT);
 	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
 			&data->img->line_len, &data->img->endian);
-	loadtextures(data);
 	init_minimap(data);
+	loadtextures(data);
 	return (data->img);
 }
